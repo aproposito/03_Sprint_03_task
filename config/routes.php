@@ -12,9 +12,9 @@
 $routes = array(
 	'/test' => 'test#index',
 	'/tasks' => 'tasks#index',
-	'/tasks/show/:id' => 'tasks#show',
+	//'/tasks/show/:id' => 'tasks#show',
 	'/tasks/create' => 'tasks#create',
 	'/tasks/delete/:id' => 'tasks#delete',
-	'/tasks/update/:id' => 'tasks#update',
+	'/tasks/edit/:id' => 'tasks#edit',
 	'/tasks/updateStatus/:id' => 'tasks#updateStatus'
 );

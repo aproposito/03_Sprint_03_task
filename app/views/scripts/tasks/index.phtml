@@ -17,8 +17,8 @@
     <?= $task['name'] ?>
     <?= substr($task['description'], 0, 50) ?>
     <?= $task['status'] ?>
-    <a href="/tasks/show/<?= $task['id'] ?>">View</a>
-    <a href="/tasks/delete/<? $task['id'] ?>">Delete</a>
+    <a href="/tasks/edit/<?= $task['id'] ?>">View</a>
+    <a href="/tasks/delete/<?= $task['id'] ?>">Delete</a>
     </li>
 <?php endforeach; ?>
 </ul>

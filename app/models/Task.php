@@ -44,6 +44,7 @@ public static function destroy(int $id): void {
     $data = array_filter($data, function($task) use ($id) {
         return $task["id"] !== $id;
         });
+    $data = array_values($data);
     $newJson = json_encode($data, JSON_PRETTY_PRINT);
     file_put_contents(self::$file, $newJson);
 }

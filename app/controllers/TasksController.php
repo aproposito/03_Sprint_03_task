@@ -13,7 +13,7 @@ class TasksController extends ApplicationController
     public function showAction()
     {
 
-        $id = $this->_getParam('id');
+        $id = (int) $this->_getParam('id');
         $task = Task::getById($id);
         $this->view->task = $task;
     }
@@ -28,12 +28,12 @@ class TasksController extends ApplicationController
     }
     public function deleteAction()
     {
-        $id = $this->_getParam('id');
+        $id = (int) $this->_getParam('id');
         Task::destroy($id);
         header('Location: /tasks');
         exit;
     }
-    public function updateAction()
+    public function editAction()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
@@ -41,14 +41,14 @@ class TasksController extends ApplicationController
             header('Location: /tasks');
             exit;
         } else {
-            $id = $this->_getParam('id');
+            $id = (int) $this->_getParam('id');
             $task = Task::getById($id);
             $this->view->task = $task;
         }
     }
     public function updateStatusAction()
     {
-        $id = $this->_getParam('id');
+        $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
         Task::updateStatus($id, $status);
         header('Location: /tasks');

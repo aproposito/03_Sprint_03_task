@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Revisar POO en PHP",
-        "description": "Practicar con ejercicios de herencia y polimorfisno",
+        "description": "Practicar con ejercicios de herencia y polimorfismo",
         "status": "pending",
         "start_time": "2026-04-20 09:00:00",
         "end_time": null,
@@ -19,11 +19,18 @@
     },
     {
         "id": 3,
-        "name": "Leer un capítulo del libro",
-        "description": "Leer el siguiente capítulo de Anna Karenina",
+        "name": "Leer un cap\u00edtulo del libro",
+        "description": "Leer el siguiente cap\u00edtulo de Anna Karenina",
         "status": "in_progress",
         "start_time": "2026-04-22 09:00:00",
         "end_time": null,
         "user_id": 3
+    },
+    {
+        "name": "Pasear a Merl\u00edn",
+        "description": "Sacar a pasear al perro por Montjuic",
+        "status": "pending",
+        "end_time": "esta tarde",
+        "id": 4
     }
 ]
