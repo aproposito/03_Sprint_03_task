@@ -10,5 +10,8 @@
  * '/calendar' => 'calendar#index'
  */
 $routes = array(
-	'/test' => 'test#index'
+	'/tags' => 'tags#index',
+	'/tags/create' => 'tags#create',
+	'/tags/edit/:id' => 'tags#edit',
+	'/tags/delete/:id' => 'tags#delete'
 );
