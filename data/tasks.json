@@ -1,33 +1,29 @@
 [
-  {
-    "id": 1,
-    "name": "Revisar POO en PHP",
-    "description": "Practicar con ejercicios de herencia y polimorfisno",
-    "status": "pending",
-    "start_time": "2026-04-20 09:00:00",
-    "end_time": null,
-    "user_id": 1
-  },
-  {
-    "id": 2,
-    "name": "Compra semanal",
-    "description": "Hacer la compra de la semana",
-    "status": "completed",
-    "start_time":"2026-04-18 09:00:00",
-    "end_time": "2026-04-18 11:00:00",
-    "user_id":2
-  },
-  {
-   "id": 3,
-   "name": "Leer un capítulo del libro",
-   "description": "Leer el siguiente capítulo de Anna Karenina",
-   "status":"in_progress",
-   "start_time":"2026-04-22 09:00:00",
-   "end_time": null,
-   "user_id": 3
-    
+    {
+        "id": 1,
+        "name": "Revisar POO en PHP",
+        "description": "Practicar con ejercicios de herencia y polimorfisno",
+        "status": "pending",
+        "start_time": "2026-04-20 09:00:00",
+        "end_time": null,
+        "user_id": 1
+    },
+    {
+        "id": 2,
+        "name": "Compra semanal",
+        "description": "Hacer la compra de la semana",
+        "status": "completed",
+        "start_time": "2026-04-18 09:00:00",
+        "end_time": "2026-04-18 11:00:00",
+        "user_id": 2
+    },
+    {
+        "id": 3,
+        "name": "Leer un capítulo del libro",
+        "description": "Leer el siguiente capítulo de Anna Karenina",
+        "status": "in_progress",
+        "start_time": "2026-04-22 09:00:00",
+        "end_time": null,
+        "user_id": 3
     }
-
 ]
- 
-  

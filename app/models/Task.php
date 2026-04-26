@@ -65,7 +65,6 @@ public static function update(array $task): void {
 public static function updateStatus(int $id, string $status): void {
     $json = file_get_contents(self::$file);
     $data = json_decode($json, true);
-    $id = $task["id"];
     foreach ($data as $index => $CurrentTask) {
     if ($CurrentTask["id"] === $id) {
         $data[$index]["status"] = $status;
