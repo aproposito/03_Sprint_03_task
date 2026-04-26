@@ -7,7 +7,8 @@ class TagsController extends ApplicationController
 
     public function indexAction()
     {
-        $this->view->tags = Tag::getByUser($_SESSION['user_id']);
+        $this->view->tags = Tag::getByUser(1);
+        //($_SESSION['user_id']);
     }
 
     public function createAction()
@@ -17,11 +18,12 @@ class TagsController extends ApplicationController
                 'name' => $_POST['name'],
                 'color' => $_POST['color'],
                 'icon' => $_POST['icon'],
-                'user_id' => $_SESSION['user_id']
+                'user_id' => $_SESSION['user_id'] ?? 1
             ];
 
-            Tag::save($tag);
-            header('Location: /tags');
+            $model = new Tag();
+            $model->save($tag);
+            header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
     }
@@ -36,20 +38,25 @@ class TagsController extends ApplicationController
                 'name'    => $_POST['name'],
                 'color'   => $_POST['color'],
                 'icon'    => $_POST['icon'],
-                'user_id' => $_SESSION['user_id']
+                'user_id' => $_SESSION['user_id'] ?? 1
             ];
 
-            Tag::update($tag);
-            header('Location: /tags');
-            exit;
+            $model = new Tag();
+            $model->update($tag);
+            header('Location: ' . $this->_baseUrl() . '/tags');
+            exit; 
+        } else {
+            $model = new Tag();
+            $this->view->tag = $model->fetchOne($id);
         }
     }
 
     public function deleteAction()
     {
         $id = (int) $this->_getParam('id');
-        Tag::delete($id);
-        header('Location: /tags');
+        $model = new Tag();
+        $model->delete($id);
+        header('Location: ' . $this->_baseUrl() . '/tags');
         exit;
     }
 }

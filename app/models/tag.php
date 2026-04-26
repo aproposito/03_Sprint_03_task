@@ -8,6 +8,9 @@ class Tag extends Model
     private static string $file = __DIR__ . '/../../data/tags.json';
     private static string $taskTagsFile = __DIR__ . '/../../data/task_tags.json';
 
+    public function __construct() {}
+
+    
     public static function getAll(): array
     {
         $json = file_get_contents(self::$file);
@@ -15,7 +18,7 @@ class Tag extends Model
         return $tags;
     }
 
-    public static function fetchOne(int $id): ?array
+    public function fetchOne($id): ?array
     {
         $json = file_get_contents(self::$file);
         $tags = json_decode($json, true);
@@ -27,7 +30,7 @@ class Tag extends Model
         return null;
     }
 
-    public static function save(array $tag): void
+    public function save($tag = []): void
     {
         $tags = self::getAll();
 
@@ -53,7 +56,7 @@ class Tag extends Model
     }
 
 
-    public static function delete(int $id): void
+    public function delete($id): void
     {
 
         $tags = self::getAll();
@@ -67,7 +70,7 @@ class Tag extends Model
     }
 
 
-    public static function getByUser(int $userId): array
+    public static function getByUser($userId): array
     {
         $json = file_get_contents(self::$file);
         $tags = json_decode($json, true);
