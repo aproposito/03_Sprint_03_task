@@ -37,6 +37,7 @@ class TasksController extends ApplicationController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
+            $task['id'] = (int) $task['id'];
             Task::update($task);
             header('Location: /tasks');
             exit;

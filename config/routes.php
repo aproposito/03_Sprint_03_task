@@ -9,10 +9,11 @@
  * '/' => 'index#index',
  * '/calendar' => 'calendar#index'
  */
+
+// Tasks — Álvaro
 $routes = array(
 	'/test' => 'test#index',
 	'/tasks' => 'tasks#index',
-	//'/tasks/show/:id' => 'tasks#show',
 	'/tasks/create' => 'tasks#create',
 	'/tasks/delete/:id' => 'tasks#delete',
 	'/tasks/edit/:id' => 'tasks#edit',
