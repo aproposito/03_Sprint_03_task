@@ -1,0 +1,55 @@
+<h1>Edit Tag</h1>
+
+<form action="<?= $this->baseUrl() ?>/tags/edit/<?= $this->tag['id'] ?>" method="POST">
+
+
+    <!-- Name -->
+    <p>Name:</p>
+    <input type="text" name="name" value="<?= $this->tag['name'] ?>" required>
+
+    <!-- Color picker -->
+    <p>Color:</p>
+
+    <?php
+    $colors = ['gray', 'green', 'teal', 'pink', 'purple', 'red', 'blue', 'indigo', 'yellow', 'orange', 'navy', 'amber', 'cyan', 'rose', 'violet'];
+    ?>
+    <?php foreach ($colors as $color): ?>
+        <label>
+            <input type="radio" 
+                   name="color" 
+                   value="<?= $color ?>"<?= $this->tag['color'] === $color ? 'checked' : '' ?>
+                   >
+            <?= $color ?>
+        </label>
+    <?php endforeach ?>
+
+
+    <!-- Icon picker -->
+    <p>Icon:</p>
+
+    <?php
+    $icons = ['#️⃣', '🏠', '🚗', '🌼', '🍽️', '🎂', '✈️', '💼', '📚', '🎵', '🏋️', '💊', '🛒', '🎮', '🌟'];
+    ?>
+
+    <?php
+    foreach ($icons as $icon): ?>
+        <label>
+            <input type="radio" 
+                   name="icon" 
+                   value="<?= $icon ?>"
+                   <?= $this->tag['icon'] === $icon ? 'checked' : '' ?>
+                   >
+            <?= $icon ?>
+        </label>
+    <?php endforeach ?>
+
+    <br><br>
+
+
+    <button type="submit">Save</button>
+
+</form>
+
+    <a href="<?= $this->baseUrl() ?>/tags/delete/<?= $this->tag['id'] ?>">Delete</a>
+    <a href="<?= $this->baseUrl() ?>/tags">Back to Tags</a>
+
