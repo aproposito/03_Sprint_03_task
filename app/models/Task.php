@@ -81,4 +81,4 @@ public static function updateStatus(int $id, string $status): void {
     $newJson = json_encode($data, JSON_PRETTY_PRINT);
     file_put_contents(self::$file, $newJson);
     }
-}
+}}
