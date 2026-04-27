@@ -12,6 +12,13 @@
 
 // Tasks — Álvaro
 $routes = array(
+//tags routes
+	'/tags' => 'tags#index',
+	'/tags/create' => 'tags#create',
+	'/tags/edit/:id' => 'tags#edit',
+	'/tags/delete/:id' => 'tags#delete',
+
+//tasks routes
 	'/test' => 'test#index',
 	'/tasks' => 'tasks#index',
 	'/tasks/create' => 'tasks#create',
