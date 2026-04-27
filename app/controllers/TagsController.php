@@ -8,7 +8,7 @@ class TagsController extends ApplicationController
     public function indexAction()
     {
         $this->view->tags = Tag::getByUser(1);
-        //($_SESSION['user_id']);
+        //replace with ($_SESSION['user_id'] when login is complete
     }
 
     public function createAction()
@@ -18,7 +18,7 @@ class TagsController extends ApplicationController
                 'name' => $_POST['name'],
                 'color' => $_POST['color'],
                 'icon' => $_POST['icon'],
-                'user_id' => $_SESSION['user_id'] ?? 1
+                'user_id' => $_SESSION['user_id'] ?? 1 //remove ?? 1 when login is complete
             ];
 
             $model = new Tag();
@@ -38,7 +38,7 @@ class TagsController extends ApplicationController
                 'name'    => $_POST['name'],
                 'color'   => $_POST['color'],
                 'icon'    => $_POST['icon'],
-                'user_id' => $_SESSION['user_id'] ?? 1
+                'user_id' => $_SESSION['user_id'] ?? 1 //remove ?? 1 when login is complete
             ];
 
             $model = new Tag();
