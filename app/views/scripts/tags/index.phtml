@@ -1,130 +1,74 @@
-<div class="max-w-sm mx-auto mt-8 p-4">
+<h1>Tags</h1>
 
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-xl font-bold">Tags</h1>
-        <a href="<?= $this->baseUrl() ?>/dashboard" class="text-sm text-gray-500">⬅ go back</a>
-    </div>
+<a href="/tasks">Go to Tasks</a>
 
-    <!-- globals  -->
-    <h2 class="text-sm font-semibold text-gray-500 uppercase mb-2">Global Tags</h2>
-    <div class="mb-6">
-        <?php foreach ($this->tags as $tag): ?>
-            <?php if ($tag['user_id'] === null): ?>
-                <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <span><?= $tag['icon'] ?></span>
-                        <span class="w-3 h-3 rounded-full inline-block" style="background-color: <?= $tag['color'] ?>"></span>
-                        <span><?= $tag['name'] ?></span>
-                    </div>
-                </div>
-            <?php endif ?>
-        <?php endforeach ?>
-    </div>
+<!-- Global Tags -->
+<h2>Global Tags</h2>
+<ul>
+    <?php foreach ($this->tags as $tag): ?>
+        <?php if ($tag['user_id'] === null): ?>
+            <li>
+                <?= $tag['icon'] ?> <?= $tag['name'] ?>
+            </li>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>
 
-    <!-- My tags -->
-    <h2 class="text-sm font-semibold text-gray-500 uppercase mb-2">My tags</h2>
-    <div class="mb-6">
-        <?php foreach ($this->tags as $tag): ?>
-            <?php if ($tag['user_id'] !== null): ?>
-                <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                    <div class="flex items-center gap-2">
-                        <span><?= $tag['icon'] ?></span>
-                        <span class="w-3 h-3 rounded-full inline-block" style="background-color: <?= $tag['color'] ?>"></span>
-                        <span><?= $tag['name'] ?></span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <a href="<?= $this->baseUrl() ?>/tags/edit/<?= $tag['id'] ?>" class="text-sm text-blue-500">edit</a>
-                        <a href="<?= $this->baseUrl() ?>/tags/delete/<?= $tag['id'] ?>" class="text-sm text-white bg-red-500 px-2 py-0.5 rounded">✕</a>
-                    </div>
-                </div>
-            <?php endif ?>
-        <?php endforeach ?>
-    </div>
+<!-- My Tags -->
+<h2>My Tags</h2>
+<ul>
+    <?php foreach ($this->tags as $tag): ?>
+        <?php if ($tag['user_id'] !== null): ?>
+            <li>
+                <?=  $tag['icon'] ?> <?= $tag['name'] ?>
+                <a href="tags/edit/<?= $tag['id'] ?>">Edit</a>
+                <a href="tags/delete/<?= $tag['id'] ?>">Delete</a>
+            </li>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>
 
-    <!-- create tag -->
-    <h2 class="text-sm font-semibold text-gray-500 uppercase mb-2">New Tag</h2>
-    <form action="<?= $this->baseUrl() ?>/tags/create" method="POST" class="flex flex-col gap-3">
+<!-- CREATE NEW TAG  -->
+<h2>New Tag</h2>
 
-        <!-- name -->
-        <input type="text" name="name" placeholder="nombre" required
-            class="border border-gray-300 rounded px-3 py-2 text-sm w-full" />
+<form action="tags/create" method="POST">
 
-        <!-- pick color -->
-        <div>
-            <p class="text-sm text-gray-500 mb-1">color</p>
-            <div class="flex flex-wrap gap-2">
-                <label><input type="radio" name="color" value="#6B7280" checked class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#6B7280"></span></label>
-                <label><input type="radio" name="color" value="#86EFAC" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#86EFAC"></span></label>
-                <label><input type="radio" name="color" value="#1D9E75" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#1D9E75"></span></label>
-                <label><input type="radio" name="color" value="#F9A8D4" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#F9A8D4"></span></label>
-                <label><input type="radio" name="color" value="#8B5CF6" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#8B5CF6"></span></label>
-                <label><input type="radio" name="color" value="#EF4444" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#EF4444"></span></label>
-                <label><input type="radio" name="color" value="#93C5FD" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#93C5FD"></span></label>
-                <label><input type="radio" name="color" value="#3B8BD4" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#3B8BD4"></span></label>
-                <label><input type="radio" name="color" value="#FDE047" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#FDE047"></span></label>
-                <label><input type="radio" name="color" value="#F97316" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#F97316"></span></label>
-                <label><input type="radio" name="color" value="#1E3A5F" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#1E3A5F"></span></label>
-                <label><input type="radio" name="color" value="#D4A017" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#D4A017"></span></label>
-                <label><input type="radio" name="color" value="#14B8A6" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#14B8A6"></span></label>
-                <label><input type="radio" name="color" value="#F87171" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#F87171"></span></label>
-                <label><input type="radio" name="color" value="#E9D5FF" class="hidden peer" />
-                    <span class="w-7 h-7 rounded-full block cursor-pointer ring-2 ring-transparent peer-checked:ring-black" style="background-color:#E9D5FF"></span></label>
-            </div>
-        </div>
+<!-- NAME-->
+ <p>Name:</p>
+        <input type="text" name="name" required>
+<!-- COLOR -->
+ <p>Color:</p>
+            <?php
+            $colors = [ 'gray', 'green', 'teal', 'pink', 'purple', 'red', 'blue', 'indigo', 'yellow', 'orange', 'navy', 'amber', 'cyan', 'rose', 'violet'];
+            ?>
+     <?php foreach ($colors as $color): ?>
+        <label>
+            <input type="radio" 
+            name="color" 
+            value="<?= $color ?>" <?= $color === 'gray' ? 'checked' : '' ?>
+            >
+            <?= $color ?>
+        </label>
+    <?php endforeach ?>
 
-        <!-- pick icon -->
-        <div>
-            <p class="text-sm text-gray-500 mb-1">icon</p>
-            <div class="flex flex-wrap gap-2">
-                <label><input type="radio" name="icon" value="#️⃣" checked class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">#️⃣</span></label>
-                <label><input type="radio" name="icon" value="🏠" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🏠</span></label>
-                <label><input type="radio" name="icon" value="🚗" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🚗</span></label>
-                <label><input type="radio" name="icon" value="🌼" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🌼</span></label>
-                <label><input type="radio" name="icon" value="🍽️" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🍽️</span></label>
-                <label><input type="radio" name="icon" value="🎂" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🎂</span></label>
-                <label><input type="radio" name="icon" value="✈️" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">✈️</span></label>
-                <label><input type="radio" name="icon" value="💼" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">💼</span></label>
-                <label><input type="radio" name="icon" value="📚" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">📚</span></label>
-                <label><input type="radio" name="icon" value="🎵" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🎵</span></label>
-                <label><input type="radio" name="icon" value="🏋️" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🏋️</span></label>
-                <label><input type="radio" name="icon" value="💊" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">💊</span></label>
-                <label><input type="radio" name="icon" value="🛒" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🛒</span></label>
-                <label><input type="radio" name="icon" value="🎮" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🎮</span></label>
-                <label><input type="radio" name="icon" value="🌟" class="hidden peer" />
-                    <span class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-transparent peer-checked:border-black cursor-pointer text-lg">🌟</span></label>
-            </div>
-        </div>
+    <!-- ICON -->
+     <p>Icon:</p>
+            <?php
+            $icons = ['#️⃣', '🏠', '🚗', '🌼', '🍽️', '🎂', '✈️', '💼', '📚', '🎵', '🏋️', '💊', '🛒', '🎮', '🌟'];
+            ?>
+             <?php
+            foreach ($icons as $icon): ?>
+                <label>
+                    <input type="radio" 
+                    name="icon" 
+                    value="<?= $icon ?>" <?= $icon === '🏠' ? 'checked' : '' ?>
+                    >
+                    <?= $icon ?>
+                </label>
+            <?php endforeach ?>
 
-        <button type="submit" class="bg-white border border-gray-300 rounded px-4 py-2 text-sm self-end">Create</button>
-    </form>
+            <br><br>
 
-</div>
+        <button type="submit">Create</button>
+    
+</form>

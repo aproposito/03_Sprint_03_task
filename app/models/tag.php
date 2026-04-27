@@ -9,7 +9,6 @@ class Tag extends Model
     private static string $taskTagsFile = __DIR__ . '/../../data/task_tags.json';
 
     public function __construct() {}
-
     
     public static function getAll(): array
     {
@@ -38,7 +37,7 @@ class Tag extends Model
         $tag['id'] = $maxId + 1;
 
         $tags[] = $tag;
-        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT));
+        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
 
@@ -52,7 +51,7 @@ class Tag extends Model
                 break;
             }
         }
-        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT));
+        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
 
@@ -61,12 +60,12 @@ class Tag extends Model
 
         $tags = self::getAll();
         $tags = array_values(array_filter($tags, fn($t) => $t['id'] !== $id));
-        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT));
+        file_put_contents(self::$file, json_encode($tags, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
         $json = file_get_contents(self::$taskTagsFile);
         $taskTags = json_decode($json, true);
         $taskTags = array_values(array_filter($taskTags, fn($tt) => $tt['tag_id'] !== $id));
-        file_put_contents(self::$taskTagsFile, json_encode($taskTags, JSON_PRETTY_PRINT));
+        file_put_contents(self::$taskTagsFile, json_encode($taskTags, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
 
