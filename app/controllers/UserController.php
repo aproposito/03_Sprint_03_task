@@ -8,7 +8,7 @@ class UserController extends ApplicationController {
             $user = $userModel->checkPassword($username, $password);
             if ($user !== false) {
                 $_SESSION["user"] = $user;
-                header("Location: " . $this->_baseUrl() . "/test");
+                header("Location: " . $this->_baseUrl() . "/dashboard");
                 exit;
             } else {
                 $this->view->error = "Wrong username or password. Please try again.";
