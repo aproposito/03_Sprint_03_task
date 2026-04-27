@@ -1,0 +1,74 @@
+<h1>Tags</h1>
+
+<a href="<?= $this->baseUrl() ?>/tasks">Go to Tasks</a>
+
+<!-- Global Tags -->
+<h2>Global Tags</h2>
+<ul>
+    <?php foreach ($this->tags as $tag): ?>
+        <?php if ($tag['user_id'] === null): ?>
+            <li>
+                <?= $tag['icon'] ?> <?= $tag['name'] ?>
+            </li>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>
+
+<!-- My Tags -->
+<h2>My Tags</h2>
+<ul>
+    <?php foreach ($this->tags as $tag): ?>
+        <?php if ($tag['user_id'] !== null): ?>
+            <li>
+                <?=  $tag['icon'] ?> <?= $tag['name'] ?>
+                <a href="tags/edit/<?= $tag['id'] ?>">Edit</a>
+                <a href="tags/delete/<?= $tag['id'] ?>">Delete</a>
+            </li>
+        <?php endif ?>
+    <?php endforeach ?>
+</ul>
+
+<!-- CREATE NEW TAG  -->
+<h2>New Tag</h2>
+
+<form action="tags/create" method="POST">
+
+<!-- NAME-->
+ <p>Name:</p>
+        <input type="text" name="name" required>
+<!-- COLOR -->
+ <p>Color:</p>
+            <?php
+            $colors = [ 'gray', 'green', 'teal', 'pink', 'purple', 'red', 'blue', 'indigo', 'yellow', 'orange', 'navy', 'amber', 'cyan', 'rose', 'violet'];
+            ?>
+     <?php foreach ($colors as $color): ?>
+        <label>
+            <input type="radio" 
+            name="color" 
+            value="<?= $color ?>" <?= $color === 'gray' ? 'checked' : '' ?>
+            >
+            <?= $color ?>
+        </label>
+    <?php endforeach ?>
+
+    <!-- ICON -->
+     <p>Icon:</p>
+            <?php
+            $icons = ['#️⃣', '🏠', '🚗', '🌼', '🍽️', '🎂', '✈️', '💼', '📚', '🎵', '🏋️', '💊', '🛒', '🎮', '🌟'];
+            ?>
+             <?php
+            foreach ($icons as $icon): ?>
+                <label>
+                    <input type="radio" 
+                    name="icon" 
+                    value="<?= $icon ?>" <?= $icon === '🏠' ? 'checked' : '' ?>
+                    >
+                    <?= $icon ?>
+                </label>
+            <?php endforeach ?>
+
+            <br><br>
+
+        <button type="submit">Create</button>
+    
+</form>
