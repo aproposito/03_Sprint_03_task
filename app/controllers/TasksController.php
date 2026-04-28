@@ -7,8 +7,8 @@ class TasksController extends ApplicationController
 
     public function indexAction()
     {
-
-        $tasks = Task::getAll();
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $tasks = $modelClass::getAll();
         $search = $this->_getParam('search');
         $status = $this->_getParam('status');
 
@@ -23,50 +23,55 @@ class TasksController extends ApplicationController
             });
         }
 
-        $this->view->tasks = $tasks;
+        $this->view->tasks = array_values($tasks);
     }   
     public function showAction()
     {
-
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
         $id = (int) $this->_getParam('id');
-        $task = Task::getById($id);
+        $task = $modelClass::getById($id);
         $this->view->task = $task;
     }
     public function createAction()
     {
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task'; 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
-            Task::create($task);
+            $task['user_id'] = 1;
+            $modelClass::create($task);
             header('Location: /dashboard');
             exit;
         }
     }
     public function deleteAction()
     {
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
         $id = (int) $this->_getParam('id');
-        Task::destroy($id);
+        $modelClass::destroy($id);
         header('Location: /dashboard');
         exit;
     }
     public function editAction()
     {
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
             $task['id'] = (int) $task['id'];
-            Task::update($task);
+            $modelClass::update($task);
             header('Location: /dashboard');
             exit;
         } else {
             $id = (int) $this->_getParam('id');
-            $task = Task::getById($id);
+            $task = $modelClass::getById($id);
             $this->view->task = $task;
         }
     }
     public function updateStatusAction()
     {
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
-        Task::updateStatus($id, $status);
+        $modelClass::updateStatus($id, $status);
         header('Location: /dashboard');
         exit;
     }

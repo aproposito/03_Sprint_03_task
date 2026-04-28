@@ -10,7 +10,7 @@
     <option value="completed" <?= $this->task['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
 </select>
 <!-- <input type="text" name="start_time" value="<?= $this->task['start_time'] ?>"> -->
-<input type="text" name="end_time" value="<?= $this->task['end_time'] ?>">
+<input type="datetime-local" name="end_time" value="<?= $this->task['end_time'] ?>">
 <input type="hidden" name="id" value="<?= $this->task['id'] ?>">
 <button type="submit">Save</button>
 </form>

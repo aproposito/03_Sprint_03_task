@@ -9,7 +9,7 @@
     <option value="completed">Completed</option>
     <option value="">All statuses</option>
 </select>
-<input type="text" name="end_time">
+<input type="datetime-local" name="end_time" value="<?= $this->task['end_time'] ?>">
 <button type="submit">Create task</button>
 </form>
 
