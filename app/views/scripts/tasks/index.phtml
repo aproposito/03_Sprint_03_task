@@ -1,5 +1,7 @@
 <h1>My tasks</h1>
 <a href="/tasks/create">Create task</a>
+<a href="<?= $this->baseUrl() ?>/user/logout">Logout</a>
+<form action="/tasks" method="GET">
 <form action="/dashboard" method="GET">
 <input name= "search" type="text">
 <select name="status">
