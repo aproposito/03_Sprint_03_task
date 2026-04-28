@@ -73,5 +73,65 @@ class User {
         }
         return false;
     }
+
+    public function findById($id) {
+        $users = $this->getAllUsers();
+        foreach ($users as $user) {
+            if ($user["id"] === $id) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public function editUsername($userId, $newUsername) {
+        $newUsername = trim($newUsername);
+        if ($newUsername === "" || strlen($newUsername) > 20) {
+            return false;
+        }
+
+        $existing = $this->findByUsername($newUsername);
+        if ($existing !== null && $existing["id"] !== $userId) {
+            return false;
+        }
+
+        $users = $this->getAllUsers();
+        foreach ($users as &$user) {
+            if ($user["id"] === $userId) {
+                $user["username"] = $newUsername;
+                $this->saveAllUsers($users);
+                return $user;
+            }
+        }
+        return false;
+    }
+
+    public function editPassword($userId, $newPassword) {
+        if (empty($newPassword) || strlen($newPassword) < 8) {
+            return false;
+        }
+
+        $users = $this->getAllUsers();
+        foreach ($users as &$user) {
+            if ($user["id"] === $userId) {
+                $user["password"] = password_hash($newPassword, PASSWORD_DEFAULT);
+                $this->saveAllUsers($users);
+                return $user;
+            }
+        }
+        return false;
+    }
+
+    public function delete($userId) {
+        $users = $this->getAllUsers();
+        foreach ($users as $index => $user) {
+            if ($user["id"] === $userId) {
+                unset($users[$index]);
+                $this->saveAllUsers(array_values($users));
+                return true;
+            }
+        }
+        return false;
+    }
 }
     ?>
