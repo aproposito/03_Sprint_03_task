@@ -1,1 +1,27 @@
-[]
+[
+    {
+        "id": "69efdaf07c5aa",
+        "username": "pogiko",
+        "password": "$2y$12$PhZYADIpsgR\/v5m\/xj65duhDPjLW7maGP8bcWceWxfuvEIkNCIDDi"
+    },
+    {
+        "id": "69efdb6f2f865",
+        "username": "holatesteando",
+        "password": "$2y$12$frNe9mVrJPE.AMYg6rsDLe4c0w.SuIwb7qKg17qcXFOC47VLiB2j2"
+    },
+    {
+        "id": "69efdc0b89812",
+        "username": "testinglogin",
+        "password": "$2y$12$Vl93usboomDOYMyoPRfaYOeOgKCkCFf0UWfjHFQcozRRPqFQ19LQS"
+    },
+    {
+        "id": "69f06a649004d",
+        "username": "llucbadia",
+        "password": "$2y$12$ntSPGTEsLflR.YcbsX.rq.Uzjj9Hghmdb3Xahv4gB\/xPAlZj0NH3W"
+    },
+    {
+        "id": "69f075e84c83f",
+        "username": "martina",
+        "password": "$2y$12$TD\/TxYqWLVWADypoAnqZ2eSf2wmif8RzSOEx9GpnvOHbIYAOlN4z."
+    }
+]
