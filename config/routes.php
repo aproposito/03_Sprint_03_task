@@ -20,7 +20,7 @@ $routes = array(
 
 //tasks routes
 	'/test' => 'test#index',
-	'/tasks' => 'tasks#index',
+	'/dashboard' => 'tasks#index',
 	'/tasks/create' => 'tasks#create',
 	'/tasks/delete/:id' => 'tasks#delete',
 	'/tasks/edit/:id' => 'tasks#edit',
@@ -29,5 +29,4 @@ $routes = array(
 	'/user/login' => 'user#login',
 	'/user/register' => 'user#register',
 	'/user/logout' => 'user#logout',
-	'/dashboard' => 'dashboard#index'
 );

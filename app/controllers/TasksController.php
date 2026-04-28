@@ -32,7 +32,7 @@ class TasksController extends ApplicationController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
             Task::create($task);
-            header('Location: /tasks');
+            header('Location: /dashboard');
             exit;
         }
     }
@@ -40,7 +40,7 @@ class TasksController extends ApplicationController
     {
         $id = (int) $this->_getParam('id');
         Task::destroy($id);
-        header('Location: /tasks');
+        header('Location: /dashboard');
         exit;
     }
     public function editAction()
@@ -49,7 +49,7 @@ class TasksController extends ApplicationController
             $task = $this->_getAllParams();
             $task['id'] = (int) $task['id'];
             Task::update($task);
-            header('Location: /tasks');
+            header('Location: /dashboard');
             exit;
         } else {
             $id = (int) $this->_getParam('id');
@@ -62,7 +62,7 @@ class TasksController extends ApplicationController
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
         Task::updateStatus($id, $status);
-        header('Location: /tasks');
+        header('Location: /dashboard');
         exit;
     }
 }
