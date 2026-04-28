@@ -27,7 +27,7 @@ class UserController extends ApplicationController {
                 if ($newUser !== false) {
                     $_SESSION["user"] = $newUser;
                     $_SESSION["user_id"] = $newUser["id"];
-                    header("Location: " . $this->_baseUrl() . "/dashboard");
+                    header("Location: " . $this->_baseUrl() . "/user/login");
                     exit;
                 } else {
                     $this->view->error = "That username is already taken. Please choose another.";

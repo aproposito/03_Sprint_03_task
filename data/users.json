@@ -28,5 +28,10 @@
         "id": "69f0e7113c572",
         "username": "kent",
         "password": "$2y$12$Mn52RkVzyVFPxHQ3cbcJb.ZjkEmA7DfrjMr4tsT\/1kArMCJrXErka"
+    },
+    {
+        "id": "69f10ac62c9b6",
+        "username": "testing2",
+        "password": "$2y$12$6bqwwxi\/RO7T6X5GhlnEC.Y5v7f1RHGBY9iLig2A9oXnFtxcAfOfK"
     }
 ]
