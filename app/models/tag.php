@@ -22,7 +22,7 @@ class Tag extends Model
         $json = file_get_contents(self::$file);
         $tags = json_decode($json, true);
         foreach ($tags as $tag) {
-            if ($tag['id'] === $id) {
+            if ($tag['id'] == $id) {
                 return $tag;
             }
         }
@@ -46,7 +46,7 @@ class Tag extends Model
         $tags = self::getAll();
 
         foreach ($tags as $index => $t) {
-            if ($t['id'] === $tag['id']) {
+            if ($t['id'] == $tag['id']) {
                 $tags[$index] = $tag;
                 break;
             }
@@ -75,7 +75,7 @@ class Tag extends Model
         $tags = json_decode($json, true);
 
         $filtered = array_filter($tags, function ($tag) use ($userId) {
-            return $tag["user_id"] === null || $tag["user_id"] === $userId;
+            return $tag["user_id"] === null || $tag["user_id"] == $userId;
         });
 
         return array_values($filtered);
