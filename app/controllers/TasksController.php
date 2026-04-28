@@ -20,11 +20,6 @@ class TasksController extends ApplicationController
             });
         }
 
-        // if (!empty($tagIds)) {
-        //     $matchingTaskIds = Tag::getTaskIdsByTagIds($tagIds);
-        //     $tasks = array_filter($tasks, fn($t) => in_array($t['id'], $matchingTaskIds));
-        // }
-
         if ($tagId) {
             $matchingTaskIds = Tag::getTaskIdsByTagIds([$tagId]);
             $tasks = array_filter($tasks, fn($t) => in_array($t['id'], $matchingTaskIds));
@@ -37,8 +32,6 @@ class TasksController extends ApplicationController
         $this->view->tasks = array_values($tasks);
         $this->view->allTags = Tag::getByUser($_SESSION["user"]["id"]);
         $this->view->selectedTagIds = $tagId ? [$tagId] : [];
-
-        // $this->view->tasks = $tasks;
         }
 
 
@@ -58,7 +51,6 @@ class TasksController extends ApplicationController
         unset($task['tag_ids']);
         $newId = Task::create($task);
         Tag::saveTaskTags($newId, $tagIds);
-            // Task::create($task);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
         }

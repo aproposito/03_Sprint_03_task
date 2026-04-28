@@ -1,10 +1,7 @@
 <h1>My tasks</h1>
-<!-- <a href="/tasks/create">Create task</a> -->
 <a href="<?= $this->baseUrl() ?>/tasks/create">Create task</a>
 <a href="<?= $this->baseUrl() ?>/user/logout">Logout</a>
 
-<!-- BUG, duplicate: <form action="/tasks" method="GET"> -->
-<!-- <form action="/dashboard" method="GET"> -->
 <form action="<?= $this->baseUrl() ?>/dashboard" method="GET">
 <input name= "search" type="text">
 <select name="status">
@@ -25,10 +22,8 @@
 </select>
 
 <button type="submit">Search</button>
-<!-- <a href="/dashboard">Clear filters</a> -->
  <a href="<?= $this->baseUrl() ?>/dashboard">Clear filters</a>
  
-<!-- added Manage Tags link -->
 <a href="<?= $this->baseUrl() ?>/tags">Manage Tags</a> 
 </form>
 <ul>
@@ -43,8 +38,6 @@
     <?php endforeach ?>
 
 
-
-    <!-- can't comment these for some reason, also without $this->baseUrl() -->
     <a href="<?= $this->baseUrl() ?>/tasks/edit/<?= $task['id'] ?>">View</a>
     <a href="<?= $this->baseUrl() ?>/tasks/delete/<?= $task['id'] ?>">Delete</a>
     </li>

@@ -3,11 +3,9 @@
 <form action="<?= $this->baseUrl() ?>/tags/edit/<?= $this->tag['id'] ?>" method="POST">
 
 
-    <!-- Name -->
     <p>Name:</p>
     <input type="text" name="name" value="<?= $this->tag['name'] ?>" required>
 
-    <!-- Color picker -->
     <p>Color:</p>
 
     <?php
@@ -24,7 +22,6 @@
     <?php endforeach ?>
 
 
-    <!-- Icon picker -->
     <p>Icon:</p>
 
     <?php

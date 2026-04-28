@@ -2,7 +2,6 @@
 
 <a href="<?= $this->baseUrl() ?>/dashboard">Go to Tasks</a>
 
-<!-- Global Tags -->
 <h2>Global Tags</h2>
 <ul>
     <?php foreach ($this->tags as $tag): ?>
@@ -14,7 +13,6 @@
     <?php endforeach ?>
 </ul>
 
-<!-- My Tags -->
 <h2>My Tags</h2>
 <ul>
     <?php foreach ($this->tags as $tag): ?>
@@ -29,15 +27,12 @@
     <?php endforeach ?>
 </ul>
 
-<!-- CREATE NEW TAG  -->
 <h2>New Tag</h2>
 
 <form action="<?= $this->baseUrl() ?>/tags/create" method="POST">
 
-<!-- NAME-->
  <p>Name:</p>
         <input type="text" name="name" required>
-<!-- COLOR -->
  <p>Color:</p>
             <?php
             $colors = [ 'gray', 'green', 'teal', 'pink', 'purple', 'red', 'blue', 'indigo', 'yellow', 'orange', 'navy', 'amber', 'cyan', 'rose', 'violet'];
@@ -52,7 +47,6 @@
         </label>
     <?php endforeach ?>
 
-    <!-- ICON -->
      <p>Icon:</p>
             <?php
             $icons = ['#️⃣', '🏠', '🚗', '🌼', '🍽️', '🎂', '✈️', '💼', '📚', '🎵', '🏋️', '💊', '🛒', '🎮', '🌟'];

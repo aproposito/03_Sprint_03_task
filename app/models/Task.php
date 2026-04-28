@@ -36,8 +36,6 @@ public static function create(array $task): int //void
     $task ["id"] = $newId;
     $task['start_time'] = date('Y-m-d H:i:s');
     $data [] = $task;
-    // $newJson = json_encode($data, JSON_PRETTY_PRINT);
-    // file_put_contents(self::$file, $newJson);
     file_put_contents(self::$file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     return $newId;
 }

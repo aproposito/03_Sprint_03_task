@@ -5,7 +5,6 @@ declare(strict_types=1);
 class TagsController extends ApplicationController
 {
 
-    //for MySQL implementation? 
     public function beforeFilters()
     {
         if (empty($_SESSION['user'])) {

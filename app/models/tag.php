@@ -2,13 +2,11 @@
 
 declare(strict_types=1);
 
-class Tag //extends Model
+class Tag 
 {
 
     private static string $file = __DIR__ . '/../../data/tags.json';
     private static string $taskTagsFile = __DIR__ . '/../../data/task_tags.json';
-
-    // public function __construct() {} // delete for MySQL implementation
     
     public static function getAll(): array
     {
