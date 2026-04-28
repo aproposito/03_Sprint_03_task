@@ -31,4 +31,8 @@ $routes = array(
 	'/user/login' => 'user#login',
 	'/user/register' => 'user#register',
 	'/user/logout' => 'user#logout',
+	'/user/profile' => 'user#profile',
+	'/user/update-username' => 'user#updateUsername',
+	'/user/update-password' => 'user#updatePassword',
+	'/user/delete' => 'user#delete',
 );

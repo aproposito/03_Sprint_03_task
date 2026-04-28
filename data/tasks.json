@@ -1,32 +1,29 @@
 [
     {
+        "name": "task 1",
+        "description": "1 ",
+        "status": "pending",
+        "end_time": "1",
+        "user_id": "69efdc0b89812",
+        "id": 1,
+        "start_time": "2026-04-28 19:57:18"
+    },
+    {
+        "name": "task2",
+        "description": "2",
+        "status": "pending",
+        "end_time": "2",
+        "user_id": "69f0e7113c572",
+        "id": 2,
+        "start_time": "2026-04-28 19:57:39"
+    },
+    {
+        "name": "testing 3",
+        "description": "",
+        "status": "pending",
+        "end_time": "2026-04-28 21:32:37",
+        "user_id": "69f10b30a91ea",
         "id": 3,
-        "name": "Leer un cap\u00edtulo del libro",
-        "description": "Leer el siguiente cap\u00edtulo de Anna Karenina",
-        "status": "in_progress",
-        "start_time": "2026-04-22 09:00:00",
-        "end_time": null,
-        "user_id": 3
-    },
-    {
-        "name": "Pasear a Merl\u00edn",
-        "description": "Sacar a pasear al perro por Montjuic",
-        "status": "pending",
-        "end_time": "esta tarde",
-        "id": 4
-    },
-    {
-        "name": "does this show here?",
-        "description": "aaaaaaaaaaaaaa",
-        "status": "pending",
-        "end_time": "aaaaaaaaaa",
-        "id": 6
-    },
-    {
-        "name": "upaupaaa",
-        "description": "aaaaaaaaaaaaaa",
-        "status": "pending",
-        "end_time": "aaaa",
-        "id": 7
+        "start_time": "2026-04-28 21:32:27"
     }
 ]

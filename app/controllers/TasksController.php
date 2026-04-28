@@ -7,8 +7,12 @@ class TasksController extends ApplicationController
 
     public function indexAction()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . $this->_baseUrl() . '/user/login');
+            exit;
+        }
 
-        $tasks = Task::getAll();
+        $tasks = Task::getByUser($_SESSION['user_id']);
         $search = $this->_getParam('search');
         $status = $this->_getParam('status');
         $tagId = isset($_GET['tags']) && $_GET['tags'] !== '' ? (int) $_GET['tags'] : null;
@@ -20,66 +24,73 @@ class TasksController extends ApplicationController
             });
         }
 
-        if ($tagId) {
-            $matchingTaskIds = Tag::getTaskIdsByTagIds([$tagId]);
-            $tasks = array_filter($tasks, fn($t) => in_array($t['id'], $matchingTaskIds));
+        if (!empty($status)) {
+            $tasks = array_filter($tasks, function ($task) use ($status) {
+                return $task['status'] === $status;
+            });
         }
 
-        foreach ($tasks as &$task) {
-            $task['tags'] = Tag::getTagsByTaskId($task['id']);
-        }
-
-        $this->view->tasks = array_values($tasks);
-        $this->view->allTags = Tag::getByUser($_SESSION["user"]["id"]);
-        $this->view->selectedTagIds = $tagId ? [$tagId] : [];
-        }
-
-
+        $this->view->tasks = $tasks;
+    }
     public function showAction()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . $this->_baseUrl() . '/user/login');
+            exit;
+        }
 
         $id = (int) $this->_getParam('id');
-        $task = Task::getById($id);
+        $task = Task::getById($id, $_SESSION['user_id']);
         $this->view->task = $task;
     }
     public function createAction()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $tagIds = isset($_POST['tag_ids']) ? array_map('intval', $_POST['tag_ids']) : [];
-            
-        $task = $this->_getAllParams();
-        unset($task['tag_ids']);
-        $newId = Task::create($task);
-        Tag::saveTaskTags($newId, $tagIds);
-        header('Location: ' . $this->_baseUrl() . '/dashboard');
-        exit;
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: ' . $this->_baseUrl() . '/user/login');
+                exit;
+            }
+
+            $task = $this->_getAllParams();
+            $task['user_id'] = $_SESSION['user_id'];
+            Task::create($task);
+            header('Location: ' . $this->_baseUrl() . '/dashboard');
+            exit;
         }
 
         $this->view->availableTags = Tag::getByUser($_SESSION["user"]["id"]);
     }
     public function deleteAction()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . $this->_baseUrl() . '/user/login');
+            exit;
+        }
+
         $id = (int) $this->_getParam('id');
-        Tag::deleteTaskTags($id);
-        Task::destroy($id);
+        Task::destroy($id, $_SESSION['user_id']);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
     }
     public function editAction()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . $this->_baseUrl() . '/user/login');
+            exit;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tagIds = isset($_POST['tag_ids']) ? array_map('intval', $_POST['tag_ids']) : [];
 
             $task = $this->_getAllParams();
             $task['id'] = (int) $task['id'];
-            unset($task['tag_ids']);
-            Task::update($task);
-            Tag::saveTaskTags($task['id'], $tagIds);
+            $task['user_id'] = $_SESSION['user_id'];
+            Task::update($task, $_SESSION['user_id']);
             header('Location: ' . $this->_baseUrl() . '/dashboard');
             exit;
         } else {
             $id = (int) $this->_getParam('id');
-            $task = Task::getById($id);
+            $task = Task::getById($id, $_SESSION['user_id']);
             $this->view->task = $task;
             $this->view->availableTags = Tag::getByUser($_SESSION["user"]["id"]);
             $this->view->selectedTagIds = array_column(Tag::getTagsByTaskId($id), 'id');
@@ -87,9 +98,14 @@ class TasksController extends ApplicationController
     }
     public function updateStatusAction()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ' . $this->_baseUrl() . '/user/login');
+            exit;
+        }
+
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
-        Task::updateStatus($id, $status);
+        Task::updateStatus($id, $status, $_SESSION['user_id']);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
     }

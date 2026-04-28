@@ -25,8 +25,23 @@
         "password": "$2y$12$TD\/TxYqWLVWADypoAnqZ2eSf2wmif8RzSOEx9GpnvOHbIYAOlN4z."
     },
     {
-        "id": "69f0d52d8cc0c",
-        "username": "berry",
-        "password": "$2y$10$QYj24sYjMF1m45a\/z4uLouPpHSLkJUQmzwRpTNlAuzIstNAPp2EXS"
+        "id": "69f0e7113c572",
+        "username": "kent",
+        "password": "$2y$12$Mn52RkVzyVFPxHQ3cbcJb.ZjkEmA7DfrjMr4tsT\/1kArMCJrXErka"
+    },
+    {
+        "id": "69f10ac62c9b6",
+        "username": "testing2",
+        "password": "$2y$12$6bqwwxi\/RO7T6X5GhlnEC.Y5v7f1RHGBY9iLig2A9oXnFtxcAfOfK"
+    },
+    {
+        "id": "69f11e1c610f7",
+        "username": "testing5",
+        "password": "$2y$12$Lz6oUQuhIIdZGWi13NRVQeRJMPZi3lGZYSZmOHyiWsbUtKMyEf6Di"
+    },
+    {
+        "id": "69f12058b0b3e",
+        "username": "testing4",
+        "password": "$2y$12$ITLi\/WUcylGZPMv.D5EW6OZNvLqnBJHncA7kiGrnAObfpLz9Kz\/9e"
     }
 ]

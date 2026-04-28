@@ -3,85 +3,129 @@ declare(strict_types =1);
 
 class Task extends Model {
 
-private static string $file = __DIR__ . '/../../data/tasks.json';
+    private static string $file = __DIR__ . '/../../data/tasks.json';
 
-public static function getAll(): array {
-  $json = file_get_contents(self::$file);
-  $data = json_decode($json, true);
-  return $data ?? [];
-}
-
-public static function getById(int $id): ?array
-{
-    $json = file_get_contents(self::$file);
-    $data = json_decode($json, true);
-    $taskFetched = null;
-
-    foreach ($data as $task) {
-        if ($task["id"] == $id) {
-            return $task;
-        }
+    public static function getAll(): array {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        return $data ?? [];
     }
 
-    return $taskFetched;
-}
+    public static function getByUser($userId): array
+    {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            return [];
+        }
 
-public static function create(array $task): int //void 
- {
-    $json = file_get_contents(self::$file);
-    $data = json_decode($json, true);
-    
-    $maxId = empty($data) ? 0 : max(array_column($data, 'id'));
-    $newId = $maxId +1;
-    $task ["id"] = $newId;
-    $task['start_time'] = date('Y-m-d H:i:s');
-    $data [] = $task;
-    file_put_contents(self::$file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    return $newId;
-}
-
-public static function destroy(int $id): void {
-    $json = file_get_contents(self::$file);
-    $data = json_decode($json, true);
-    $data = array_filter($data, function($task) use ($id) {
-        return $task["id"] !== $id;
+        $filtered = array_filter($data, function ($task) use ($userId) {
+            return isset($task['user_id']) && (string) $task['user_id'] === (string) $userId;
         });
-    $data = array_values($data);
-    $newJson = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents(self::$file, $newJson);
-}
 
-public static function update(array $task): void {
-    $json = file_get_contents(self::$file);
-    $data = json_decode($json, true);
-    $id = $task["id"];
-    foreach ($data as $index => $CurrentTask) {
-    if ($CurrentTask["id"] === $id) {
-        $data[$index] = $task;
-    if ($task["status"] === 'completed' && empty($task["end_time"])) {
-        $data[$index]["end_time"] = date('Y-m-d H:i:s');
+        return array_values($filtered);
     }
-        break;
-    }
-    }
-    $newJson = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents(self::$file, $newJson);
-}
 
-public static function updateStatus(int $id, string $status): void {
-    $json = file_get_contents(self::$file);
-    $data = json_decode($json, true);
-    foreach ($data as $index => $CurrentTask) {
-    if ($CurrentTask["id"] === $id) {
-        $data[$index]["status"] = $status;
-        if ($status === 'completed') {
-        $data[$index]["end_time"] = date('Y-m-d H:i:s');
+    public static function getById(int $id, $userId = null): ?array
+    {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            return null;
         }
-        break;
+
+        foreach ($data as $task) {
+            if ($task['id'] === $id && ($userId === null || (isset($task['user_id']) && (string) $task['user_id'] === (string) $userId))) {
+                return $task;
+            }
+        }
+
+        return null;
     }
+
+    public static function create(array $task): void {
+        if (!isset($task['user_id'])) {
+            throw new Exception('Task must belong to a user.');
+        }
+
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            $data = [];
+        }
+        
+        $maxId = empty($data) ? 0 : max(array_column($data, 'id'));
+        $newId = $maxId + 1;
+        $task['id'] = $newId;
+        $task['start_time'] = date('Y-m-d H:i:s');
+        $data[] = $task;
+        $newJson = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file, $newJson);
     }
-    $newJson = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents(self::$file, $newJson);
-    
-}
+
+    public static function destroy(int $id, $userId = null): void {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            $data = [];
+        }
+
+        $data = array_values(array_filter($data, function($task) use ($id, $userId) {
+            if ($task['id'] !== $id) {
+                return true;
+            }
+            if ($userId !== null && (!isset($task['user_id']) || (string) $task['user_id'] !== (string) $userId)) {
+                return true;
+            }
+            return false;
+        }));
+
+        $newJson = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file, $newJson);
+    }
+
+    public static function update(array $task, $userId = null): void {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            $data = [];
+        }
+
+        $id = $task['id'];
+        foreach ($data as $index => $CurrentTask) {
+            if ($CurrentTask['id'] === $id && ($userId === null || (isset($CurrentTask['user_id']) && (string) $CurrentTask['user_id'] === (string) $userId))) {
+                $mergedTask = array_merge($CurrentTask, $task);
+                if ($mergedTask['status'] === 'completed' && empty($mergedTask['end_time'])) {
+                    $mergedTask['end_time'] = date('Y-m-d H:i:s');
+                }
+                $data[$index] = $mergedTask;
+                break;
+            }
+        }
+
+        $newJson = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file, $newJson);
+    }
+
+    public static function updateStatus(int $id, string $status, $userId = null): void {
+        $json = file_get_contents(self::$file);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            $data = [];
+        }
+
+        foreach ($data as $index => $CurrentTask) {
+            if ($CurrentTask['id'] === $id && ($userId === null || (isset($CurrentTask['user_id']) && (string) $CurrentTask['user_id'] === (string) $userId))) {
+                $CurrentTask['status'] = $status;
+                if ($status === 'completed') {
+                    $CurrentTask['end_time'] = date('Y-m-d H:i:s');
+                }
+                $data[$index] = $CurrentTask;
+                break;
+            }
+        }
+
+        $newJson = json_encode($data, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file, $newJson);
+    }
 }
