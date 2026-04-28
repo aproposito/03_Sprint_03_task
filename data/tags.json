@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "work",
+        "color": "#3B8BD4",
+        "icon": "💼",
+        "user_id": null
+    },
+    {
+        "id": 2,
+        "name": "home",
+        "color": "#1D9E75",
+        "icon": "🏠",
+        "user_id": null
+    },
+    {
+        "id": 3,
+        "name": "study",
+        "color": "#8B5CF6",
+        "icon": "📚",
+        "user_id": null
+    },
+    {
+        "id": 4,
+        "name": "health",
+        "color": "#EF4444",
+        "icon": "💊",
+        "user_id": null
+    },
+    {
+        "id": 5,
+        "name": "reminders",
+        "color": "#F59E0B",
+        "icon": "🛒",
+        "user_id": null
+    },
+    {
+        "id": 6,
+        "name": "leisure",
+        "color": "#06B6D4",
+        "icon": "✈️",
+        "user_id": null
+    },
+    {
+        "name": "games",
+        "color": "navy",
+        "icon": "🎮",
+        "user_id": 1,
+        "id": 10
+    },
+    {
+        "name": "car",
+        "color": "cyan",
+        "icon": "🚗",
+        "user_id": 1,
+        "id": 12
+    }
+]
