@@ -1,19 +1,19 @@
 <h1><?= $this->task['name'] ?></h1>
 
-<form action="/tasks/update/<?= $this->task['id'] ?>" method=“POST">
-<input type="text" name=“name" value="<?= $this->task['name'] ?>">
+<form action="/tasks/edit/<?= $this->task['id'] ?>" method="POST">
+<input type="text" name="name" value="<?= $this->task['name'] ?>">
 <input type="text" name="description" value="<?= $this->task['description'] ?>">
 <select name="status">
     <option value="">All statuses</option>
-    <option value="pending">Pending</option>
-    <option value="in_progress">In progress</option>
-    <option value="completed">Completed</option>
+    <option value="pending" <?= $this->task['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
+    <option value="in_progress" <?= $this->task['status'] === 'in_progress' ? 'selected' : '' ?>>In progress</option>
+    <option value="completed" <?= $this->task['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
 </select>
-<input type="text" name="start_time" value="<?= $this->task['start_time'] ?>">
+<!-- <input type="text" name="start_time" value="<?= $this->task['start_time'] ?>"> -->
 <input type="text" name="end_time" value="<?= $this->task['end_time'] ?>">
 <input type="hidden" name="id" value="<?= $this->task['id'] ?>">
 <button type="submit">Save</button>
 </form>
 
 <a href="/tasks/delete/<?= $this->task['id'] ?>">Delete</a>
-<a href="/tasks">Back to dashboard</a>
+<a href="/dashboard">Back to dashboard</a>

@@ -14,5 +14,13 @@
         "status": "pending",
         "end_time": "esta tarde",
         "id": 4
+    },
+    {
+        "name": "Nueva tarea 2",
+        "description": "Esta es una tarea de prueba",
+        "status": "in_progress",
+        "start_time": "2026-04-27 22:40:51",
+        "end_time": "28 de abril 2026",
+        "id": 5
     }
 ]
