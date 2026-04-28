@@ -8,7 +8,7 @@ private static string $file = __DIR__ . '/../../data/tasks.json';
 public static function getAll(): array {
   $json = file_get_contents(self::$file);
   $data = json_decode($json, true);
-  return $data;
+  return $data ?? [];
 }
 
 public static function getById(int $id): ?array
@@ -30,7 +30,7 @@ public static function create(array $task): void {
     $json = file_get_contents(self::$file);
     $data = json_decode($json, true);
     
-    $maxId = max(array_column($data, 'id'));
+    $maxId = empty($data) ? 0 : max(array_column($data, 'id'));
     $newId = $maxId +1;
     $task ["id"] = $newId;
     $task['start_time'] = date('Y-m-d H:i:s');
@@ -62,7 +62,7 @@ public static function update(array $task): void {
     }
         break;
     }
-}
+    }
     $newJson = json_encode($data, JSON_PRETTY_PRINT);
     file_put_contents(self::$file, $newJson);
 }
@@ -75,10 +75,12 @@ public static function updateStatus(int $id, string $status): void {
         $data[$index]["status"] = $status;
         if ($status === 'completed') {
         $data[$index]["end_time"] = date('Y-m-d H:i:s');
+        }
         break;
     }
-}
+    }
     $newJson = json_encode($data, JSON_PRETTY_PRINT);
     file_put_contents(self::$file, $newJson);
-    }
-}}
+    
+}
+}
