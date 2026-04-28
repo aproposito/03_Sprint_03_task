@@ -5,9 +5,19 @@ declare(strict_types=1);
 class TasksController extends ApplicationController
 {
 
-   public function indexAction(){
+    public function indexAction()
+    {
 
         $tasks = Task::getAll();
+        $search = $this->_getParam('search');
+        $status = $this->_getParam('status');
+
+        if (!empty($search)) {
+            $tasks = array_filter($tasks, function ($task) use ($search) {
+                return str_contains($task['name'], $search);
+            });
+        }
+
         $this->view->tasks = $tasks;
     }   
     public function showAction()
