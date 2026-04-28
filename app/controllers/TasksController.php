@@ -5,9 +5,19 @@ declare(strict_types=1);
 class TasksController extends ApplicationController
 {
 
-   public function indexAction(){
+    public function indexAction()
+    {
 
         $tasks = Task::getAll();
+        $search = $this->_getParam('search');
+        $status = $this->_getParam('status');
+
+        if (!empty($search)) {
+            $tasks = array_filter($tasks, function ($task) use ($search) {
+                return str_contains($task['name'], $search);
+            });
+        }
+
         $this->view->tasks = $tasks;
     }   
     public function showAction()
@@ -22,7 +32,7 @@ class TasksController extends ApplicationController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
             Task::create($task);
-            header('Location: /tasks');
+            header('Location: /dashboard');
             exit;
         }
     }
@@ -30,15 +40,16 @@ class TasksController extends ApplicationController
     {
         $id = (int) $this->_getParam('id');
         Task::destroy($id);
-        header('Location: /tasks');
+        header('Location: /dashboard');
         exit;
     }
     public function editAction()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
+            $task['id'] = (int) $task['id'];
             Task::update($task);
-            header('Location: /tasks');
+            header('Location: /dashboard');
             exit;
         } else {
             $id = (int) $this->_getParam('id');
@@ -51,7 +62,7 @@ class TasksController extends ApplicationController
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
         Task::updateStatus($id, $status);
-        header('Location: /tasks');
+        header('Location: /dashboard');
         exit;
     }
 }
