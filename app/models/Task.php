@@ -26,7 +26,8 @@ public static function getById(int $id): ?array
     return $taskFetched;
 }
 
-public static function create(array $task): void {
+public static function create(array $task): int //void 
+ {
     $json = file_get_contents(self::$file);
     $data = json_decode($json, true);
     
@@ -35,8 +36,10 @@ public static function create(array $task): void {
     $task ["id"] = $newId;
     $task['start_time'] = date('Y-m-d H:i:s');
     $data [] = $task;
-    $newJson = json_encode($data, JSON_PRETTY_PRINT);
-    file_put_contents(self::$file, $newJson);
+    // $newJson = json_encode($data, JSON_PRETTY_PRINT);
+    // file_put_contents(self::$file, $newJson);
+    file_put_contents(self::$file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    return $newId;
 }
 
 public static function destroy(int $id): void {

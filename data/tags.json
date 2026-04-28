@@ -42,24 +42,38 @@
         "user_id": null
     },
     {
-        "name": "games",
-        "color": "navy",
-        "icon": "🎮",
-        "user_id": 1,
-        "id": 10
-    },
-    {
-        "id": 12,
-        "name": "car license",
-        "color": "cyan",
-        "icon": "🚗",
-        "user_id": 1
-    },
-    {
-        "name": "music",
-        "color": "cyan",
+        "name": "music ",
+        "color": "pink",
         "icon": "🎵",
-        "user_id": 1,
-        "id": 13
+        "user_id": "69f075e84c83f",
+        "id": 14
+    },
+    {
+        "id": 15,
+        "name": "car",
+        "color": "amber",
+        "icon": "🚗",
+        "user_id": "69f075e84c83f"
+    },
+    {
+        "name": "hobby",
+        "color": "pink",
+        "icon": "🌼",
+        "user_id": "69f0d52d8cc0c",
+        "id": 16
+    },
+    {
+        "name": "fun",
+        "color": "indigo",
+        "icon": "💼",
+        "user_id": "69f075e84c83f",
+        "id": 17
+    },
+    {
+        "name": "workoutttt",
+        "color": "blue",
+        "icon": "🏋️",
+        "user_id": "69f075e84c83f",
+        "id": 18
     }
 ]

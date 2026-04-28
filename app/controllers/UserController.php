@@ -8,7 +8,7 @@ class UserController extends ApplicationController {
             $user = $userModel->checkPassword($username, $password);
             if ($user !== false) {
                 $_SESSION["user"] = $user;
-                header("Location: " . $this->_baseUrl() . "/tasks");
+                header("Location: " . $this->_baseUrl() . "/dashboard"); //note: route -> /tasks before. just checking if it works with new dashboard route
                 exit;
             } else {
                 $this->view->error = "Wrong username or password. Please try again.";
