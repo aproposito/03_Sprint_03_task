@@ -22,5 +22,13 @@
         "start_time": "2026-04-27 22:40:51",
         "end_time": "28 de abril 2026",
         "id": 5
+    },
+    {
+        "name": "Prueba",
+        "description": "l\u00e1lkjflaksjflkasdjlfkjl",
+        "status": "pending",
+        "end_time": "1 de mayo",
+        "id": 6,
+        "start_time": "2026-04-28 11:54:24"
     }
 ]

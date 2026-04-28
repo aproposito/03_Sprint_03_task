@@ -17,6 +17,11 @@ class TasksController extends ApplicationController
                 return str_contains($task['name'], $search);
             });
         }
+        if (!empty($status)) {
+            $tasks = array_filter($tasks, function ($task) use ($status) {
+                return $task['status'] === $status;
+            });
+        }
 
         $this->view->tasks = $tasks;
     }   
