@@ -92,7 +92,8 @@ class TagsController extends ApplicationController
                 header('Location: ' . $this->_baseUrl() . '/tasks/edit/' . $taskId);
             } else {
                 header('Location: ' . $this->_baseUrl() . '/tags');
-            } exit;
+            }
+            exit;
         }
         $this->view->returnTo = $returnTo;
         $this->view->taskId = $taskId;
