@@ -60,7 +60,7 @@ class Tag
     }
 
 
-    public static function getByUser(string $userId): array
+    public static function getByUser(int|string $userId): array
     {
         $tags = self::getAll();
         $filtered = array_filter($tags, function ($tag) use ($userId) {
