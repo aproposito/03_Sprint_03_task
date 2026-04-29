@@ -1,11 +1,13 @@
 <?php
 class UserController extends ApplicationController {
+
    public function loginAction() {
-    $userModel = new User();
-    if ($this->getRequest()->isPost()) {
+   $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();  
+       if ($this->getRequest()->isPost()) {
         $username = $this->_getParam("username");
         $password = $this->_getParam("password");
         $user = $userModel->checkPassword($username, $password);
+        
         if ($user !== false) {
             $_SESSION["user"] = $user;
             $_SESSION["user_id"] = $user["id"];
@@ -19,7 +21,7 @@ class UserController extends ApplicationController {
 
 
     public function registerAction() {
-        $userModel = new User();
+        $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();
         if ($this->getRequest()->isPost()) {
             $username = $this->_getParam("username");
             $password = $this->_getParam("password");
@@ -46,7 +48,7 @@ class UserController extends ApplicationController {
         exit;
     }
     public function profileAction() {
-        $userModel = new User();
+        $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();
         $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
         if (!$userId) {
             header("Location: " . $this->_baseUrl() . "/user/login");
@@ -66,7 +68,7 @@ class UserController extends ApplicationController {
         unset($_SESSION["user_message"], $_SESSION["user_message_type"]);
     }
     public function updateUsernameAction() {
-        $userModel = new User();
+        $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();
         $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
         if (!$userId || !$this->getRequest()->isPost()) {
             header("Location: " . $this->_baseUrl() . "/user/profile");
@@ -88,7 +90,7 @@ class UserController extends ApplicationController {
         exit;
     }
     public function updatePasswordAction() {
-        $userModel = new User();
+        $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();
         $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
         if (!$userId || !$this->getRequest()->isPost()) {
             header("Location: " . $this->_baseUrl() . "/user/profile");
@@ -108,7 +110,7 @@ class UserController extends ApplicationController {
         exit;
     }
     public function deleteAction() {
-        $userModel = new User();
+        $userModel = PERSISTENCE === 'mysql' ? new UserMysql() : new User();
         $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
         if (!$userId || !$this->getRequest()->isPost()) {
             header("Location: " . $this->_baseUrl() . "/user/profile");
