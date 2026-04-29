@@ -1,8 +1,8 @@
 <h1>My tasks</h1>
-<a href="/tasks/create">Create task</a>
-<a href="/user/profile">Profile</a>
-<a href="/user/logout">Logout</a>
-<form action="/dashboard" method="GET">
+<a href="<?= $this->baseUrl ?>/tasks/create">Create task</a>
+<a href="<?= $this->baseUrl ?>/user/profile">Profile</a>
+<a href="<?= $this->baseUrl ?>/user/logout">Logout</a>
+<form action="<?= $this->baseUrl ?>/dashboard" method="GET">
 <input name="search" type="text">
 <select name="status">
     <option value="">All statuses</option>
@@ -10,9 +10,20 @@
     <option value="in_progress">In progress</option>
     <option value="completed">Completed</option>
 </select>
+
+<select name="tags">
+    <option value="">All Tags</option>
+    <?php foreach ($this->allTags as $tag): ?>
+        <option value="<?= $tag['id'] ?>" 
+        <?= in_array($tag['id'], $this->selectedTagIds ?? []) ? 'selected' : '' ?>>
+            <?= $tag['name'] ?>
+        </option>
+    <?php endforeach ?>
+</select>
+
 <button type="submit">Search</button>
-<a href="/dashboard">Clear filters</a>
-<a href="/tags">Manage Tags</a>
+<a href="<?= $this->baseUrl ?>/dashboard">Clear filters</a>
+<a href="<?= $this->baseUrl ?>/tags">Manage Tags</a>
 </form>
 <ul>
 <?php foreach ($this->tasks as $task): ?>
@@ -20,8 +31,11 @@
     <?= $task['name'] ?>
     <?= substr($task['description'], 0, 50) ?>
     <?= $task['status'] ?>
-    <a href="/tasks/edit/<?= $task['id'] ?>">View</a>
-    <a href="/tasks/delete/<?= $task['id'] ?>">Delete</a>
+    <?php foreach ($task['tags'] as $tag): ?>
+        <span><?= $tag['icon'] ?> <?= $tag['name'] ?></span>
+    <?php endforeach ?>
+    <a href="<?= $this->baseUrl ?>/tasks/edit/<?= $task['id'] ?>">View</a>
+    <a href="<?= $this->baseUrl ?>/tasks/delete/<?= $task['id'] ?>">Delete</a>
     </li>
 <?php endforeach; ?>
 </ul>

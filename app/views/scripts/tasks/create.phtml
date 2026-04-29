@@ -1,15 +1,27 @@
 <h1>New task</h1>
 
-<form action="/tasks/create" method="POST">
+<form action="<?= $this->baseUrl ?>/tasks/create" method="POST">
 <input type="text" name="name">
 <input type="text" name="description">
+
 <select name="status">
     <option value="pending">Pending</option>
     <option value="in_progress">In progress</option>
     <option value="completed">Completed</option>
 </select>
+
 <input type="datetime-local" name="end_time">
+
+<p>Tags:</p>
+<?php foreach ($this->availableTags as $tag): ?>
+    <label>
+        <input type="checkbox" name="tag_ids[]" value="<?= $tag['id'] ?>">
+        <?= $tag['icon'] ?> <?= $tag['name'] ?>
+    </label>
+<?php endforeach ?>
+<a href="<?= $this->baseUrl ?>/tags/quick-create?return_to=task_create">+ new tag</a>
+
 <button type="submit">Create task</button>
 </form>
 
-<a href="/dashboard">Back to dashboard</a>
+<a href="<?= $this->baseUrl ?>/dashboard">Back to dashboard</a>

@@ -5,6 +5,14 @@ declare(strict_types=1);
 class TagsController extends ApplicationController
 {
 
+    public function beforeFilters()
+    {
+        if (empty($_SESSION['user'])) {
+            header('Location: ' . $this->_baseUrl() . 'user/login');
+            exit;
+        }
+    }
+
     public function indexAction()
     {
         $this->view->tags = Tag::getByUser($_SESSION['user']['id']);
@@ -20,8 +28,7 @@ class TagsController extends ApplicationController
                 'user_id' => $_SESSION['user']['id']
             ];
 
-            $model = new Tag();
-            $model->save($tag);
+            Tag::save($tag);
             header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
@@ -30,6 +37,12 @@ class TagsController extends ApplicationController
     public function editAction()
     {
         $id = (int) $this->_getParam('id');
+        $tag = Tag::fetchOne($id);
+
+        if (!$tag || ($tag['user_id'] !== $_SESSION['user']['id'])) {
+            header('Location: ' . $this->_baseUrl() . '/tags');
+            exit;
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tag = [
@@ -40,22 +53,48 @@ class TagsController extends ApplicationController
                 'user_id' => $_SESSION['user']['id']
             ];
 
-            $model = new Tag();
-            $model->update($tag);
+            Tag::update($tag);
             header('Location: ' . $this->_baseUrl() . '/tags');
-            exit; 
-        } else {
-            $model = new Tag();
-            $this->view->tag = $model->fetchOne($id);
+            exit;
         }
+        $this->view->tag = $tag;
     }
 
     public function deleteAction()
     {
         $id = (int) $this->_getParam('id');
-        $model = new Tag();
-        $model->delete($id);
+        $tag = Tag::fetchOne($id);
+
+        if ($tag && $tag['user_id'] === $_SESSION['user']['id']) {
+            Tag::delete($id);
+        }
         header('Location: ' . $this->_baseUrl() . '/tags');
         exit;
+    }
+
+    public function quickCreateAction()
+    {
+        $returnTo = $this->_getParam('return_to', 'tags');
+        $taskId = $this->_getParam('task_id');
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tag = [
+                'name' => $_POST['name'],
+                'color' => $_POST['color'],
+                'icon' => $_POST['icon'],
+                'user_id' => $_SESSION['user']['id']
+            ];
+            Tag::save($tag);
+
+            if ($returnTo === 'task_create') {
+                header('Location: ' . $this->_baseUrl() . '/tasks/create');
+            } elseif ($returnTo === 'task_edit' && $taskId) {
+                header('Location: ' . $this->_baseUrl() . '/tasks/edit/' . $taskId);
+            } else {
+                header('Location: ' . $this->_baseUrl() . '/tags');
+            } exit;
+        }
+        $this->view->returnTo = $returnTo;
+        $this->view->taskId = $taskId;
     }
 }

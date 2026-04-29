@@ -1,19 +1,31 @@
 <h1><?= $this->task['name'] ?></h1>
 
-<form action="/tasks/edit/<?= $this->task['id'] ?>" method="POST">
+<form action="<?= $this->baseUrl ?>/tasks/edit/<?= $this->task['id'] ?>" method="POST">
 <input type="text" name="name" value="<?= $this->task['name'] ?>">
 <input type="text" name="description" value="<?= $this->task['description'] ?>">
+
 <select name="status">
     <option value="">All statuses</option>
     <option value="pending" <?= $this->task['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
     <option value="in_progress" <?= $this->task['status'] === 'in_progress' ? 'selected' : '' ?>>In progress</option>
     <option value="completed" <?= $this->task['status'] === 'completed' ? 'selected' : '' ?>>Completed</option>
 </select>
-<!-- <input type="text" name="start_time" value="<?= $this->task['start_time'] ?>"> -->
+
 <input type="datetime-local" name="end_time" value="<?= $this->task['end_time'] ?>">
 <input type="hidden" name="id" value="<?= $this->task['id'] ?>">
+
+<p>Tags:</p>
+<?php foreach ($this->availableTags as $tag): ?>
+    <label>
+        <input type="checkbox" name="tag_ids[]" value="<?= $tag['id'] ?>" 
+        <?= in_array($tag['id'], $this->selectedTagIds ?? []) ? 'checked' : '' ?>>
+        <?= $tag['icon'] ?> <?= $tag['name'] ?>
+    </label>
+<?php endforeach ?>
+<a href="<?= $this->baseUrl ?>/tags/quick-create?return_to=task_edit&task_id=<?= $this->task['id'] ?>">+ new tag</a>
+
 <button type="submit">Save</button>
 </form>
 
-<a href="/tasks/delete/<?= $this->task['id'] ?>">Delete</a>
-<a href="/dashboard">Back to dashboard</a>
+<a href="<?= $this->baseUrl ?>/tasks/delete/<?= $this->task['id'] ?>">Delete</a>
+<a href="<?= $this->baseUrl ?>/dashboard">Back to dashboard</a>

@@ -6,5 +6,10 @@
  */
 class ApplicationController extends Controller 
 {
-	
+    public function init()
+    {
+        parent::init();
+        $this->view->baseUrl = $this->_baseUrl();
+    }
 }
+

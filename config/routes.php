@@ -10,13 +10,13 @@
  * '/calendar' => 'calendar#index'
  */
 
-// Tasks — Álvaro
 $routes = array(
 //tags routes
 	'/tags' => 'tags#index',
 	'/tags/create' => 'tags#create',
 	'/tags/edit/:id' => 'tags#edit',
 	'/tags/delete/:id' => 'tags#delete',
+	'/tags/quick-create' => 'tags#quickCreate',
 
 //tasks routes
 	'/test' => 'test#index',
@@ -26,6 +26,7 @@ $routes = array(
 	'/tasks/edit/:id' => 'tasks#edit',
 	'/tasks/updateStatus/:id' => 'tasks#updateStatus',
 
+//user routes
 	'/user/login' => 'user#login',
 	'/user/register' => 'user#register',
 	'/user/logout' => 'user#logout',

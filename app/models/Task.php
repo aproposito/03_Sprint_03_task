@@ -43,7 +43,7 @@ class Task extends Model {
         return null;
     }
 
-    public static function create(array $task): void {
+    public static function create(array $task): int {
         if (!isset($task['user_id'])) {
             throw new Exception('Task must belong to a user.');
         }
@@ -61,6 +61,7 @@ class Task extends Model {
         $data[] = $task;
         $newJson = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents(self::$file, $newJson);
+        return $newId;
     }
 
     public static function destroy(int $id, $userId = null): void {
