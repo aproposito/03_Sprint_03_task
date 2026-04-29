@@ -1,23 +1,27 @@
 [
     {
+<<<<<<< HEAD
+=======
+        "id": 2,
+>>>>>>> develop
         "name": "task2",
         "description": "2",
         "status": "pending",
-        "end_time": "2",
-        "user_id": "69f0e7113c572",
-        "id": 2,
-        "start_time": "2026-04-28 19:57:39"
+        "start_time": "2026-04-28 19:57:39",
+        "end_time": null,
+        "user_id": "69f0e7113c572"
     },
     {
+        "id": 3,
         "name": "testing 3",
         "description": "",
         "status": "pending",
+        "start_time": "2026-04-28 21:32:27",
         "end_time": "2026-04-28 21:32:37",
-        "user_id": "69f10b30a91ea",
-        "id": 3,
-        "start_time": "2026-04-28 21:32:27"
+        "user_id": "69f10b30a91ea"
     },
     {
+<<<<<<< HEAD
         "name": "testinglogin",
         "description": "testinglogin",
         "status": "in_progress",
@@ -25,5 +29,95 @@
         "user_id": "69efdc0b89812",
         "id": 4,
         "start_time": "2026-04-29 00:09:07"
+=======
+        "id": 4,
+        "name": "user9task",
+        "description": "user9taks",
+        "status": "pending",
+        "start_time": "2026-04-29 00:22:55",
+        "end_time": "2026-04-30T00:22",
+        "user_id": "69f133133b644"
+    },
+    {
+        "id": 5,
+        "name": "user10",
+        "description": "usser 10",
+        "status": "in_progress",
+        "start_time": "2026-04-29 00:32:33",
+        "end_time": "2026-04-30T00:32",
+        "user_id": "69f13561d099b"
+    },
+    {
+        "id": 6,
+        "name": "upaupaaa",
+        "description": "aaaaaaaaaaaaaa",
+        "status": "pending",
+        "start_time": "2026-04-29 00:07:22",
+        "end_time": null,
+        "user_id": "69f075e84c83f"
+    },
+    {
+        "id": 7,
+        "name": "other new task",
+        "description": "test task to see if it shows in all users",
+        "status": "in_progress",
+        "start_time": "2026-04-29 00:26:06",
+        "end_time": null,
+        "user_id": "69f075e84c83f"
+    },
+    {
+        "id": 8,
+        "name": "other new task",
+        "description": "test task to see if it shows in all users",
+        "status": "pending",
+        "start_time": "2026-04-29 01:04:10",
+        "end_time": null,
+        "user_id": "69f13a22d2bd4"
+    },
+    {
+        "id": 9,
+        "name": "upaupaaa",
+        "description": "test task to see if it shows in all users",
+        "status": "in_progress",
+        "start_time": "2026-04-29 01:04:29",
+        "end_time": null,
+        "user_id": "69f13a22d2bd4"
+    },
+    {
+        "id": 10,
+        "name": "berry's taskk!!",
+        "description": "dddd",
+        "status": "in_progress",
+        "start_time": "2026-04-29 01:05:18",
+        "end_time": null,
+        "user_id": "69f13a22d2bd4"
+    },
+    {
+        "id": 11,
+        "name": "last taskkk",
+        "description": "sssss",
+        "status": "completed",
+        "start_time": "2026-04-29 01:05:36",
+        "end_time": null,
+        "user_id": "69f13a22d2bd4"
+    },
+    {
+        "name": "New task",
+        "description": "adfasdfasdf",
+        "status": "pending",
+        "end_time": "2026-04-29T12:18",
+        "user_id": "69f13561d099b",
+        "id": 12,
+        "start_time": "2026-04-29 09:18:48"
+    },
+    {
+        "name": "New taksk con tag per",
+        "description": "sonalizado a er si se creo",
+        "status": "pending",
+        "end_time": "2026-05-01T09:19",
+        "user_id": "69f13561d099b",
+        "id": 13,
+        "start_time": "2026-04-29 09:19:30"
+>>>>>>> develop
     }
 ]
