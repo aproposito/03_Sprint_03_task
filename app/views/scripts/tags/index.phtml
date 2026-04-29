@@ -13,7 +13,8 @@
     <div class="flex flex-wrap gap-2">
       <?php foreach ($this->tags as $tag): ?>
         <?php if ($tag['user_id'] === null): ?>
-          <span class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+          <span class="text-xs text-gray-700 px-3 py-1 rounded-full"
+                style="background-color: <?= $tag['color'] ?>22">
             <?= $tag['icon'] ?> <?= $tag['name'] ?>
           </span>
         <?php endif ?>
@@ -27,7 +28,8 @@
     <div class="flex flex-wrap gap-2">
       <?php foreach ($this->tags as $tag): ?>
         <?php if ($tag['user_id'] !== null): ?>
-          <div class="flex items-center gap-1.5 text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+          <div class="flex items-center gap-1.5 text-xs text-gray-700 px-3 py-1 rounded-full"
+                style="background-color: <?= $tag['color'] ?>22">
             <span><?= $tag['icon'] ?> <?= $tag['name'] ?></span>
             <a href="<?= $this->baseUrl() ?>/tags/edit/<?= $tag['id'] ?>" class="text-gray-400 hover:text-gray-600">Edit</a>
             <a href="<?= $this->baseUrl() ?>/tags/delete/<?= $tag['id'] ?>" class="text-red-400 hover:text-red-600">Delete</a>
@@ -86,8 +88,8 @@ $colors = [
   <div class="flex flex-wrap gap-2">
     <?php foreach ($colors as $name => $hex): ?>
       <label class="cursor-pointer">
-        <input type="radio" name="color" value="<?= $name ?>"
-               <?= $name === 'gray' ? 'checked' : '' ?>
+        <input type="radio" name="color" value="<?= $hex ?>"
+               <?= $hex === '#6b7280' ? 'checked' : '' ?>
                class="sr-only peer">
         <span class="block w-7 h-7 rounded-full border-2 border-transparent peer-checked:border-gray-800 hover:opacity-80 transition-opacity"
               style="background-color: <?= $hex ?>">
