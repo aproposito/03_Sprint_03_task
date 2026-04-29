@@ -11,6 +11,8 @@ define('ROOT_PATH', realpath(dirname(__FILE__) . '/../'));
 // defines the cms path
 define('CMS_PATH', ROOT_PATH . '/lib/base/');
 
+include(ROOT_PATH . '/config/environment.inc.php');
+
 // starts the session
 session_start();
 

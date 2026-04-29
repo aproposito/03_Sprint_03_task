@@ -1,21 +1,23 @@
 <?php
 class UserController extends ApplicationController {
-    public function loginAction () {
-        $userModel = new User();
-        if ($this->getRequest()->isPost()) {
-            $username = $this->_getParam("username");
-            $password = $this->_getParam("password");
-            $user = $userModel->checkPassword($username, $password);
-            if ($user !== false) {
-                $_SESSION["user"] = $user;
-                $_SESSION["user_id"] = $user["id"];
-                header("Location: " . $this->_baseUrl() . "/dashboard");
-                exit;
-            } else {
-                $this->view->error = "Wrong username or password. Please try again.";
-            }
+   public function loginAction() {
+    $userModel = new User();
+    if ($this->getRequest()->isPost()) {
+        $username = $this->_getParam("username");
+        $password = $this->_getParam("password");
+        $user = $userModel->checkPassword($username, $password);
+        if ($user !== false) {
+            $_SESSION["user"] = $user;
+            $_SESSION["user_id"] = $user["id"];
+            header("Location: " . $this->_baseUrl() . "/dashboard");
+            exit;
+        } else {
+            $this->view->error = "Wrong username or password. Please try again.";
         }
     }
+}
+
+
     public function registerAction() {
         $userModel = new User();
         if ($this->getRequest()->isPost()) {

@@ -48,11 +48,24 @@
         "tag_id": 21
     },
     {
+<<<<<<< HEAD
         "task_id": 10,
         "tag_id": 15
     },
     {
         "task_id": 10,
         "tag_id": 23
+=======
+        "task_id": 12,
+        "tag_id": 1
+    },
+    {
+        "task_id": 12,
+        "tag_id": 4
+    },
+    {
+        "task_id": 13,
+        "tag_id": 24
+>>>>>>> develop
     }
 ]
