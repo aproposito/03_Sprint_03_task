@@ -81,7 +81,7 @@ class TagsController extends ApplicationController
         $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $returnTo = $this->_getParam('return_to', 'tags');
         $taskId = $this->_getParam('task_id');
-
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tag = [
                 'name' => $_POST['name'],
