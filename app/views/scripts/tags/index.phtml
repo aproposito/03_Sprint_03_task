@@ -1,13 +1,11 @@
 
 <div class="max-w-lg mx-auto mt-12 px-4">
 
-  <!-- Header -->
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-xl font-medium text-gray-800">Tags</h1>
     <a href="<?= $this->baseUrl() ?>/dashboard" class="text-sm text-gray-400 hover:text-gray-600">Back to tasks</a>
   </div>
 
-  <!-- Global tags -->
   <div class="mb-6">
     <h2 class="text-xs font-medium text-gray-500 mb-2">Global tags</h2>
     <div class="flex flex-wrap gap-2">
@@ -22,7 +20,6 @@
     </div>
   </div>
 
-  <!-- My tags -->
   <div class="mb-8">
     <h2 class="text-xs font-medium text-gray-500 mb-2">My tags</h2>
     <div class="flex flex-wrap gap-2">
@@ -39,20 +36,17 @@
     </div>
   </div>
 
-  <!-- New tag form -->
   <div class="border-t border-gray-100 pt-6">
     <h2 class="text-xs font-medium text-gray-500 mb-4">New tag</h2>
 
     <form action="<?= $this->baseUrl() ?>/tags/create" method="POST" class="space-y-4">
 
-      <!-- Name -->
       <div>
         <label class="block text-xs font-medium text-gray-500 mb-1.5">Name</label>
         <input type="text" name="name" required
                class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
       </div>
 
-<!-- Color -->
 <div>
   <label class="block text-xs font-medium text-gray-500 mb-2">Color</label>
   <?php
@@ -99,7 +93,6 @@ $colors = [
   </div>
 </div>
 
-<!-- Icon -->
 <div>
   <label class="block text-xs font-medium text-gray-500 mb-2">Icon</label>
   <?php
