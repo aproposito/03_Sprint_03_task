@@ -46,5 +46,17 @@
     {
         "task_id": 7,
         "tag_id": 21
+    },
+    {
+        "task_id": 12,
+        "tag_id": 1
+    },
+    {
+        "task_id": 12,
+        "tag_id": 4
+    },
+    {
+        "task_id": 13,
+        "tag_id": 24
     }
 ]

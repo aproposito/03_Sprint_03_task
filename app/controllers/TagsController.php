@@ -15,7 +15,7 @@ class TagsController extends ApplicationController
 
     public function indexAction()
     {
-        $this->view->tags = Tag::getByUser($_SESSION["user"]["id"]);
+        $this->view->tags = Tag::getByUser($_SESSION['user']['id']);
     }
 
     public function createAction()
@@ -25,7 +25,7 @@ class TagsController extends ApplicationController
                 'name' => $_POST['name'],
                 'color' => $_POST['color'],
                 'icon' => $_POST['icon'],
-                'user_id' => $_SESSION["user"]["id"]
+                'user_id' => $_SESSION['user']['id']
             ];
 
             Tag::save($tag);
@@ -39,7 +39,7 @@ class TagsController extends ApplicationController
         $id = (int) $this->_getParam('id');
         $tag = Tag::fetchOne($id);
 
-        if (!$tag || ($tag['user_id'] !== $_SESSION["user"]["id"])) {
+        if (!$tag || ($tag['user_id'] !== $_SESSION['user']['id'])) {
             header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
@@ -50,7 +50,7 @@ class TagsController extends ApplicationController
                 'name'    => $_POST['name'],
                 'color'   => $_POST['color'],
                 'icon'    => $_POST['icon'],
-                'user_id' => $_SESSION["user"]["id"]
+                'user_id' => $_SESSION['user']['id']
             ];
 
             Tag::update($tag);
@@ -82,7 +82,7 @@ class TagsController extends ApplicationController
                 'name' => $_POST['name'],
                 'color' => $_POST['color'],
                 'icon' => $_POST['icon'],
-                'user_id' => $_SESSION["user"]["id"]
+                'user_id' => $_SESSION['user']['id']
             ];
             Tag::save($tag);
 
