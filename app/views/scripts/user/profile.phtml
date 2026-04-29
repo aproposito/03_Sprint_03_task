@@ -1,43 +1,57 @@
-<h1>Profile</h1>
+<div class="max-w-sm mx-auto mt-20 p-8 bg-white border border-gray-200 rounded-xl">
 
-<?php if (!empty($this->message)): ?>
-  <div class="message">
-    <?= htmlspecialchars($this->message) ?>
-  </div>
-<?php endif; ?>
+  <h1 class="text-xl font-medium text-gray-800 mb-6">Profile</h1>
 
-<p>Username: <?= htmlspecialchars($this->user["username"]) ?></p>
+  <?php if (!empty($this->message)): ?>
+    <div class="text-sm text-green-600 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4">
+      <?= htmlspecialchars($this->message) ?>
+    </div>
+  <?php endif; ?>
 
-<h2>Edit username</h2>
-<form method="POST" action="<?= $this->baseUrl() ?>/user/update-username">
-    <div>
-      <label>New username</label>
-      <input type="text"
-             name="username"
+  <p class="text-sm text-gray-500 mb-8">
+    Username: <span class="text-gray-800 font-medium"><?= htmlspecialchars($this->user["username"]) ?></span>
+  </p>
+
+  <h2 class="text-sm font-medium text-gray-800 mb-3">Edit username</h2>
+  <form method="POST" action="<?= $this->baseUrl() ?>/user/update-username" class="mb-6">
+    <div class="mb-3">
+      <label class="block text-xs font-medium text-gray-500 mb-1.5">New username</label>
+      <input type="text" name="username" required maxlength="20"
              value="<?= htmlspecialchars($this->user["username"]) ?>"
-             required
-             maxlength="20">
+             class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
     </div>
-    <button type="submit">Save username</button>
-</form>
+    <button type="submit"
+            class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
+      Save username
+    </button>
+  </form>
 
-<h2>Edit password</h2>
-<form method="POST" action="<?= $this->baseUrl() ?>/user/update-password">
-    <div>
-      <label>New password</label>
-      <input type="password" name="password" required minlength="8">
+  <h2 class="text-sm font-medium text-gray-800 mb-3">Edit password</h2>
+  <form method="POST" action="<?= $this->baseUrl() ?>/user/update-password" class="mb-8">
+    <div class="mb-3">
+      <label class="block text-xs font-medium text-gray-500 mb-1.5">New password</label>
+      <input type="password" name="password" required minlength="8"
+             class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
     </div>
-    <button type="submit">Save password</button>
-</form>
+    <button type="submit"
+            class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
+      Save password
+    </button>
+  </form>
 
-<h2>Account actions</h2>
+  <div class="border-t border-gray-100 pt-6 mb-6">
+    <h2 class="text-sm font-medium text-gray-800 mb-3">Account actions</h2>
+    <form method="POST" action="<?= $this->baseUrl() ?>/user/delete"
+          onsubmit="return confirm('Are you sure you want to delete your account?');">
+      <button type="submit"
+              class="w-full bg-red-50 hover:bg-red-100 text-red-600 text-sm font-medium py-2.5 rounded-lg transition-colors">
+        Delete account
+      </button>
+    </form>
+  </div>
 
-<form method="POST"
-      action="<?= $this->baseUrl() ?>/user/delete"
-      onsubmit="return confirm('Are you sure you want to delete your account?');">
-    <button type="submit">Delete account</button>
-</form>
+  <p class="text-xs text-center">
+    <a href="<?= $this->baseUrl() ?>/dashboard" class="text-gray-400 hover:underline">Back to dashboard</a>
+  </p>
 
-<p>
-  <a href="<?= $this->baseUrl() ?>/dashboard">Back to dashboard</a>
-</p>
+</div>
