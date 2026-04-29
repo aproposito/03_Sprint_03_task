@@ -42,19 +42,11 @@
         "user_id": null
     },
     {
-        "name": "music ",
-        "color": "pink",
-        "icon": "🎵",
-        "user_id": "69f075e84c83f",
-        "id": 14
-    },
-    {
-        "id": 15,
+        "id": 12,
         "name": "car",
         "color": "amber",
         "icon": "🚗",
-        "user_id": 1,
-        "id": 12
+        "user_id": 1
     },
     {
         "name": "casita",
@@ -62,13 +54,6 @@
         "icon": "🏠",
         "user_id": 69,
         "id": 13
-    },
-    {
-        "name": "Picnic",
-        "color": "purple",
-        "icon": "🌼",
-        "user_id": 69,
-        "id": 14
     },
     {
         "name": "tag1",
@@ -90,5 +75,40 @@
         "icon": "🏠",
         "user_id": "69f10b30a91ea",
         "id": 17
+    },
+    {
+        "name": "new task tag",
+        "color": "pink",
+        "icon": "🍽️",
+        "user_id": "69f075e84c83f",
+        "id": 18
+    },
+    {
+        "name": "tag testest",
+        "color": "purple",
+        "icon": "🌟",
+        "user_id": "69f075e84c83f",
+        "id": 19
+    },
+    {
+        "id": 20,
+        "name": "sport",
+        "color": "teal",
+        "icon": "🏋️",
+        "user_id": "69f13a22d2bd4"
+    },
+    {
+        "name": "music",
+        "color": "teal",
+        "icon": "🎵",
+        "user_id": "69f13a22d2bd4",
+        "id": 21
+    },
+    {
+        "name": "games",
+        "color": "orange",
+        "icon": "🎮",
+        "user_id": "69f13a22d2bd4",
+        "id": 22
     }
 ]

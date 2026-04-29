@@ -10,7 +10,6 @@
  * '/calendar' => 'calendar#index'
  */
 
-// Tasks — Álvaro
 $routes = array(
 //tags routes
 	'/tags' => 'tags#index',
