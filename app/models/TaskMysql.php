@@ -25,7 +25,13 @@ public static function getAll(): array
     $stmt = $pdo->query("SELECT * FROM tasks");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
+public static function getByUser(string $userId): array
+{
+    $pdo = self::_getConnection();
+    $stmt = $pdo->prepare("SELECT * FROM tasks WHERE user_id = ? ORDER BY start_time DESC");
+    $stmt->execute([$userId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 public static function getById(int $id): ?array
 {
     $pdo = self::_getConnection();

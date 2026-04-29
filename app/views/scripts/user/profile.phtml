@@ -1,0 +1,43 @@
+<h1>Profile</h1>
+
+<?php if (!empty($this->message)): ?>
+  <div class="message">
+    <?= htmlspecialchars($this->message) ?>
+  </div>
+<?php endif; ?>
+
+<p>Username: <?= htmlspecialchars($this->user["username"]) ?></p>
+
+<h2>Edit username</h2>
+<form method="POST" action="<?= $this->baseUrl() ?>/user/update-username">
+    <div>
+      <label>New username</label>
+      <input type="text"
+             name="username"
+             value="<?= htmlspecialchars($this->user["username"]) ?>"
+             required
+             maxlength="20">
+    </div>
+    <button type="submit">Save username</button>
+</form>
+
+<h2>Edit password</h2>
+<form method="POST" action="<?= $this->baseUrl() ?>/user/update-password">
+    <div>
+      <label>New password</label>
+      <input type="password" name="password" required minlength="8">
+    </div>
+    <button type="submit">Save password</button>
+</form>
+
+<h2>Account actions</h2>
+
+<form method="POST"
+      action="<?= $this->baseUrl() ?>/user/delete"
+      onsubmit="return confirm('Are you sure you want to delete your account?');">
+    <button type="submit">Delete account</button>
+</form>
+
+<p>
+  <a href="<?= $this->baseUrl() ?>/dashboard">Back to dashboard</a>
+</p>

@@ -1,14 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
 class TasksController extends ApplicationController
 {
-
     public function indexAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
-        $tasks = $modelClass::getAll();
+        $tasks = $modelClass::getByUser($_SESSION['user']['id']);
         $search = $this->_getParam('search');
         $status = $this->_getParam('status');
 
@@ -22,9 +20,9 @@ class TasksController extends ApplicationController
                 return $task['status'] === $status;
             });
         }
-
         $this->view->tasks = array_values($tasks);
-    }   
+    }
+
     public function showAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
@@ -32,17 +30,19 @@ class TasksController extends ApplicationController
         $task = $modelClass::getById($id);
         $this->view->task = $task;
     }
+
     public function createAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task'; 
+        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $task = $this->_getAllParams();
-            $task['user_id'] = 1;
+            $task['user_id'] = $_SESSION['user']['id'] ?? 1;
             $modelClass::create($task);
             header('Location: /dashboard');
             exit;
         }
     }
+
     public function deleteAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
@@ -51,6 +51,7 @@ class TasksController extends ApplicationController
         header('Location: /dashboard');
         exit;
     }
+
     public function editAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
@@ -66,6 +67,7 @@ class TasksController extends ApplicationController
             $this->view->task = $task;
         }
     }
+
     public function updateStatusAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';

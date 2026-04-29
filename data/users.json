@@ -28,5 +28,35 @@
         "id": "69f081743e3ef",
         "username": "alvaro",
         "password": "$2y$10$t0IgGDXZM\/Q4.CprxP2Hz.WsabR8Eka0iNrSfn2ND37dsf5e4VXe."
+    },
+    {
+        "id": "69f0e7113c572",
+        "username": "kent",
+        "password": "$2y$12$Mn52RkVzyVFPxHQ3cbcJb.ZjkEmA7DfrjMr4tsT\/1kArMCJrXErka"
+    },
+    {
+        "id": "69f10ac62c9b6",
+        "username": "testing2",
+        "password": "$2y$12$6bqwwxi\/RO7T6X5GhlnEC.Y5v7f1RHGBY9iLig2A9oXnFtxcAfOfK"
+    },
+    {
+        "id": "69f11e1c610f7",
+        "username": "testing5",
+        "password": "$2y$12$Lz6oUQuhIIdZGWi13NRVQeRJMPZi3lGZYSZmOHyiWsbUtKMyEf6Di"
+    },
+    {
+        "id": "69f12058b0b3e",
+        "username": "testing4",
+        "password": "$2y$12$ITLi\/WUcylGZPMv.D5EW6OZNvLqnBJHncA7kiGrnAObfpLz9Kz\/9e"
+    },
+    {
+        "id": "69f133133b644",
+        "username": "user9",
+        "password": "$2y$10$f9mpABT2NeUQFo2jH1nvSOo7hCt6AYg11R7QFAEw7jMuXmlYTnbty"
+    },
+    {
+        "id": "69f13561d099b",
+        "username": "user10",
+        "password": "$2y$10$Mg1txon9oJuqO7cdZ1RSiOO6l6zydYjicqUfjaER1eliXKyhOYnPq"
     }
 ]
