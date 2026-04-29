@@ -2,7 +2,7 @@
 <?php if ($this->error): ?>
   <div class="error"><?= htmlspecialchars($this->error) ?></div>
 <?php endif; ?>
-<form method="POST" action="/user/login">
+<form method="POST" action="<?= $this->baseUrl() ?>/user/login">
     <div>
       <label>Username</label>
       <input type="text" name="username" required>
@@ -14,5 +14,5 @@
     <button type="submit">Login</button>
 </form>
 <p>No account yet? 
-<a href="/user/register">Register here</a>
+<a href="<?= $this->baseUrl() ?>/user/register">Register here</a>
 </p>

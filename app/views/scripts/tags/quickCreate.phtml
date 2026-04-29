@@ -1,0 +1,38 @@
+<h1>Create New Tag</h1>
+
+<form action="<?= $this->baseUrl() ?>/tags/quick-create" method = "POST">
+    <input type="hidden" name="return_to" value="<?= $this->returnTo ?>">
+    <input type="hidden" name="task_id" value="<?= $this->taskId ?>">
+
+    <p>Name:</p>
+    <input type="text" name="name" required>
+
+    <p>Color:</p>
+    <?php $colors = ['gray','green','teal','pink','purple','red','blue','indigo','yellow','orange','navy','amber','cyan','rose','violet']; ?>
+    <?php foreach ($colors as $color): ?>
+        <label>
+            <input type="radio" name="color" value="<?= $color ?>" <?= $color === 'gray' ? 'checked' : '' ?>>
+            <?= $color ?>
+        </label>
+    <?php endforeach ?>
+
+    <p>Icon:</p>
+    <?php $icons = ['#️⃣','🏠','🚗','🌼','🍽️','🎂','✈️','💼','📚','🎵','🏋️','💊','🛒','🎮','🌟']; ?>
+    <?php foreach ($icons as $icon): ?>
+        <label>
+            <input type="radio" name="icon" value="<?= $icon ?>" <?= $icon === '🏠' ? 'checked' : '' ?>>
+            <?= $icon ?>
+        </label>
+    <?php endforeach ?>
+
+    <br><br>
+    <button type="submit">Create tag</button>
+</form>
+
+<?php if ($this->returnTo === 'task_create'): ?>
+    <a href="<?= $this->baseUrl() ?>/tasks/create">Cancel — back to new task</a>
+<?php elseif ($this->returnTo === 'task_edit' && $this->taskId): ?>
+    <a href="<?= $this->baseUrl() ?>/tasks/edit/<?= $this->taskId ?>">Cancel — back to task</a>
+<?php else: ?>
+    <a href="<?= $this->baseUrl() ?>/tags">Cancel</a>
+<?php endif ?>
