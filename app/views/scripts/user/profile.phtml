@@ -1,7 +1,5 @@
 <div class="max-w-sm mx-auto mt-20 p-8 bg-white border border-gray-200 rounded-xl">
-
   <h1 class="text-xl font-medium text-gray-800 mb-6">Profile</h1>
-
   <?php if (!empty($this->message)): ?>
     <div class="text-sm text-green-600 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5 mb-4">
       <?= htmlspecialchars($this->message) ?>
@@ -53,5 +51,4 @@
   <p class="text-xs text-center">
     <a href="<?= $this->baseUrl() ?>/dashboard" class="text-gray-400 hover:underline">Back to dashboard</a>
   </p>
-
 </div>

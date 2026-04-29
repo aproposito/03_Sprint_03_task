@@ -56,16 +56,6 @@
         "user_id": 69
     },
     {
-<<<<<<< HEAD
-=======
-        "id": 15,
-        "name": "tag1",
-        "color": "#6b7280",
-        "icon": "🏠",
-        "user_id": "69efdc0b89812"
-    },
-    {
->>>>>>> develop
         "id": 16,
         "name": "tag 2",
         "color": "#6b7280",
