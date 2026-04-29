@@ -11,8 +11,8 @@
     },
     {
         "id": "69efdc0b89812",
-        "username": "testinglogin",
-        "password": "$2y$12$Vl93usboomDOYMyoPRfaYOeOgKCkCFf0UWfjHFQcozRRPqFQ19LQS"
+        "username": "testinglogin2",
+        "password": "$2y$10$LNqd3lcgSZ2NR2Zm.OQDROHOYj1a6bXERrXSTROOrT6kc13AajjHO"
     },
     {
         "id": "69f06a649004d",
@@ -65,8 +65,14 @@
         "password": "$2y$10$X2NgY7Perya8Hwx9N5limeCSO6x\/rszuiGAGGBQSmG9T4mPXqFRrO"
     },
     {
+<<<<<<< HEAD
         "id": "69f234151c2b4",
         "username": "testing11",
         "password": "$2y$12$NdADsqTu6nBLdHcVbj5JR.NguT\/SNL5xjwUzbcg8k1lM74Ub8e42W"
+=======
+        "id": "69f1ee4cd7614",
+        "username": "alvaro1",
+        "password": "$2y$10$R.TM4YXY4RGc1q1w6EYSROLAkgJjo2oUbhR2d3QPJGEwBVb1zk.UK"
+>>>>>>> develop
     }
 ]

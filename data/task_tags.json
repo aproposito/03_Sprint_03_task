@@ -1,11 +1,16 @@
 [
     {
+<<<<<<< HEAD
         "task_id": 5,
         "tag_id": 2
     },
     {
         "task_id": 5,
         "tag_id": 3
+=======
+        "task_id": 1,
+        "tag_id": 1
+>>>>>>> develop
     },
     {
         "task_id": 4,
@@ -24,18 +29,6 @@
         "tag_id": 3
     },
     {
-        "task_id": 9,
-        "tag_id": 6
-    },
-    {
-        "task_id": 8,
-        "tag_id": 1
-    },
-    {
-        "task_id": 8,
-        "tag_id": 21
-    },
-    {
         "task_id": 7,
         "tag_id": 5
     },
@@ -44,14 +37,15 @@
         "tag_id": 21
     },
     {
-        "task_id": 12,
+        "task_id": 8,
         "tag_id": 1
     },
     {
-        "task_id": 12,
-        "tag_id": 4
+        "task_id": 8,
+        "tag_id": 21
     },
     {
+<<<<<<< HEAD
         "task_id": 13,
         "tag_id": 24
     },
@@ -70,5 +64,17 @@
     {
         "task_id": 2,
         "tag_id": 6
+=======
+        "task_id": 10,
+        "tag_id": 21
+    },
+    {
+        "task_id": 11,
+        "tag_id": 2
+    },
+    {
+        "task_id": 11,
+        "tag_id": 5
+>>>>>>> develop
     }
 ]

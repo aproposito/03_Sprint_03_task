@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-class Tag 
+class Tag
 {
 
     private static string $file = __DIR__ . '/../../data/tags.json';
     private static string $taskTagsFile = __DIR__ . '/../../data/task_tags.json';
-    
+
     public static function getAll(): array
     {
         $json = file_get_contents(self::$file);
@@ -18,11 +18,11 @@ class Tag
     public static function fetchOne(int $id): ?array
     {
         foreach (self::getAll() as $tag) {
-             if ($tag['id'] == $id) {
-                 return $tag;
-             }
-         }
-         return null;
+            if ($tag['id'] == $id) {
+                return $tag;
+            }
+        }
+        return null;
     }
 
     public static function save(array $tag): void
@@ -60,7 +60,7 @@ class Tag
     }
 
 
-    public static function getByUser(string $userId): array
+    public static function getByUser(int|string $userId): array
     {
         $tags = self::getAll();
         $filtered = array_filter($tags, function ($tag) use ($userId) {
@@ -101,6 +101,4 @@ class Tag
         $filtered = array_filter($taskTags, fn($tt) => in_array($tt['tag_id'], $tagIds));
         return array_values(array_unique(array_column($filtered, 'task_id')));
     }
-
-
 }

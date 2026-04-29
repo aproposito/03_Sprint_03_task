@@ -25,7 +25,7 @@ public static function getAll(): array
     $stmt = $pdo->query("SELECT * FROM tasks");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-public static function getByUser(string $userId): array
+public static function getByUser(int|string $userId): array
 {
     $pdo = self::_getConnection();
     $stmt = $pdo->prepare("SELECT * FROM tasks WHERE user_id = ? ORDER BY start_time DESC");
@@ -41,7 +41,7 @@ public static function getById(int $id): ?array
     return $row ?: null;
 }
 
-public static function create(array $task): void
+public static function create(array $task): int
 {
     $pdo = self::_getConnection();
     $stmt = $pdo->prepare(
@@ -55,11 +55,13 @@ public static function create(array $task): void
         'end_time'    => $task['end_time'] ?? null,
         'user_id'     => $task['user_id'] ?? null,
     ]);
+    return (int) $pdo->lastInsertId();
 }
 
 public static function destroy(int $id): void
 {
     $pdo = self::_getConnection();
+    $pdo->prepare("DELETE FROM task_tags WHERE task_id = ?")->execute([$id]);
     $pdo->prepare("DELETE FROM tasks WHERE id = ?")->execute([$id]);
 }
 
