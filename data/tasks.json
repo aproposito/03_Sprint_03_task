@@ -57,72 +57,36 @@
         "id": 8,
         "name": "other new task",
         "description": "test task to see if it shows in all users",
-        "status": "pending",
-        "start_time": "2026-04-29 01:04:10",
-        "end_time": null,
-        "user_id": "69f13a22d2bd4"
-    },
-    {
-        "id": 9,
-        "name": "upaupaaa",
-        "description": "test task to see if it shows in all users",
         "status": "in_progress",
-        "start_time": "2026-04-29 01:04:29",
-        "end_time": null,
+        "start_time": "2026-04-29 01:04:10",
+        "end_time": "2026-05-08T11:40",
         "user_id": "69f13a22d2bd4"
     },
     {
         "id": 10,
         "name": "berry's taskk!!",
-        "description": "dddd",
-        "status": "in_progress",
-        "start_time": "2026-04-29 01:05:18",
-        "end_time": null,
-        "user_id": "69f13a22d2bd4"
-    },
-    {
-        "id": 11,
-        "name": "last taskkk",
-        "description": "sssss",
+        "description": "dddd\r\nakakmlma\r\nANZ,ANKX",
         "status": "completed",
-        "start_time": "2026-04-29 01:05:36",
-        "end_time": null,
+        "start_time": "2026-04-29 01:05:18",
+        "end_time": "2026-04-29T16:54:32",
         "user_id": "69f13a22d2bd4"
     },
     {
-        "name": "New task",
-        "description": "adfasdfasdf",
-        "status": "pending",
-        "end_time": "2026-04-29T12:18",
-        "user_id": "69f13561d099b",
-        "id": 12,
-        "start_time": "2026-04-29 09:18:48"
-    },
-    {
-        "name": "New taksk con tag per",
-        "description": "sonalizado a er si se creo",
-        "status": "pending",
-        "end_time": "2026-05-01T09:19",
-        "user_id": "69f13561d099b",
-        "id": 13,
-        "start_time": "2026-04-29 09:19:30"
-    },
-    {
-        "name": "aedaerfae",
-        "description": "aefaefaef",
+        "name": "ir a gimnasio",
+        "description": "aeqef",
         "status": "in_progress",
-        "end_time": "2026-04-29T11:05",
+        "end_time": "hoy",
         "user_id": "69efdc0b89812",
-        "id": 14,
-        "start_time": "2026-04-29 11:00:30"
+        "id": 10,
+        "start_time": "2026-04-29 10:47:47"
     },
     {
-        "name": "lasdkfjlasdkjf",
-        "description": "alsdkfjalsdjfl",
-        "status": "pending",
-        "end_time": "2026-04-30T13:47",
-        "user_id": "69f1ee4cd7614",
-        "id": 15,
-        "start_time": "2026-04-29 13:47:32"
+        "name": "Design Homepage Banner for Summer Sale",
+        "description": "sfuvndmwpamquzmdzkvehbkibiplwmmbjomgpmquidglxjeoszobsazjridwrhrgmmsxgwyeuhfiomnvgmnltjkcsoldvkplvqdrymccaaloxxcrgpzognm\r\nnjsanxknsakjssssssssssssssssssssssssssfuvndmwpamquzmdzkvehbkibiplwmmbjomgpmquidglxjeoszobsazjridwrhrgmmsxgwyeuhfiomnvgmnltjkcsoldvkplvqdrymccaaloxxcrgpzognmjswlrldidmvsdukllmpqlqledakmbtravodyguazgquoiihfgtcgmttytawvtbmwoduheoseeeqajdamisehlxynsjgqobqorlvspzwqstjbtniiraevjivfmtojoutlxmhxmjnatbnaabqralxkfqfxcnppuluwepjtixzgqjdggvmlxvddgfvgkiprpcxzdcnjgnrqazooebwasvhcczwhjaqebqphyjcbnroqkpjhzhwsgyvvbckyatblsqsfsuonpidnox\r\nhoixtdwzzwywklkwibznkbbmnqkhkdiqmznixpweluiuxwmerxgzxvnnneozkaudcnqgpzsgjgjqkkudreroiuukfzaqjcfgxdcxnnmlebebqhnhelxhhgbpjrwiuvzwzlwpdhbknnkknnnvkwjgyqqorrxiktcvevccfskxqxjapvfluaymnwspmppakcrmytzyzsvrrilprldnnljtluozijengfygaeeiqgjhvcjqgnvebnpassjeudztaytibzwjvjihsvkwrfacifjpwowmwxujzzcucwdepzabzbhxudqrsivxtnnoswxanefgvdgulyrkryajxrxvtususbdrrsbguezwfotmtjzaigemqhkazreflvjjeoqvlmyycuuozcwvjpgvljmdulluxaqwwfyvirjngruoclsdhxxzlmhevmaemsxrxjmknnwvcepowgwficafbpdtgjwtvslamfgsnekqseoaghqxgdzjusyjrkrvsffzrrtbvfmzyjhilrhychcgnrbgxapoquxslrybrkineibpdkffgdfpqcublwglkyxcjlfoawiksjnfosmottytdlrtaqdsbyvwfuxiyozzwuevben",
+        "status": "in_progress",
+        "end_time": "2026-05-10T19:14",
+        "user_id": "69f13a22d2bd4",
+        "id": 11,
+        "start_time": "2026-04-29 19:14:21"
     }
 ]

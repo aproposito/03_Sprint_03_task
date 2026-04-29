@@ -56,7 +56,7 @@ class TasksController extends ApplicationController
             $task['user_id'] = $_SESSION['user']['id'] ?? 1;
             $newId = $modelClass::create($task);
             $tagModelClass::saveTaskTags($newId, $tagIds);
-            header('Location: /dashboard');
+            header('Location: ' . $this->_baseUrl() . '/dashboard');
             exit;
         }
         $this->view->availableTags = $tagModelClass::getByUser($_SESSION['user']['id']);
@@ -68,7 +68,7 @@ class TasksController extends ApplicationController
         $id = (int) $this->_getParam('id');
         Tag::deleteTaskTags($id);
         $modelClass::destroy($id);
-        header('Location: /dashboard');
+        header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
     }
 
@@ -84,7 +84,7 @@ class TasksController extends ApplicationController
             unset($task['tag_ids']);
             $modelClass::update($task);
             $tagModelClass::saveTaskTags($task['id'], $tagIds);
-            header('Location: /dashboard');
+            header('Location: ' . $this->_baseUrl() . '/dashboard');
             exit;
         } else {
             $id = (int) $this->_getParam('id');
@@ -101,7 +101,7 @@ class TasksController extends ApplicationController
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
         $modelClass::updateStatus($id, $status);
-        header('Location: /dashboard');
+        header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
     }
 }
