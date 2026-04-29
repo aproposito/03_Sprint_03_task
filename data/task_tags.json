@@ -1,9 +1,5 @@
 [
     {
-        "task_id": 1,
-        "tag_id": 1
-    },
-    {
         "task_id": 5,
         "tag_id": 2
     },
@@ -58,5 +54,21 @@
     {
         "task_id": 13,
         "tag_id": 24
+    },
+    {
+        "task_id": 1,
+        "tag_id": 5
+    },
+    {
+        "task_id": 1,
+        "tag_id": 6
+    },
+    {
+        "task_id": 2,
+        "tag_id": 5
+    },
+    {
+        "task_id": 2,
+        "tag_id": 6
     }
 ]
