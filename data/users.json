@@ -5,13 +5,8 @@
         "password": "$2y$12$xilBg62eVypmOB2u9LhM.O.fl54rjEvJCnp47zxwZ0ET7ftmXaUBK"
     },
     {
-        "id": "69f33b36bdaa1",
-        "username": "testingmysql",
-        "password": "$2y$12$IXMtxklyssK5S1\/uh\/MItuO..jAIhFVZfYhIXUGDh\/btodimp6Rxy"
-    },
-    {
-        "id": "69f35fa0edd01",
-        "username": "testinglogin11",
-        "password": "$2y$12$fZgc\/pw1Pkcc09eVZComxuDBXEmkzC1O7XIKPRQMJMudzVq2e1xWS"
+        "id": "69f2e5b16e733",
+        "username": "alvaro1",
+        "password": "$2y$10$T8YBcM1cilq30lpzdES7l.4f3Du2KAQM29ZNBNzKNyMuBlWb1Hyvi"
     }
 ]
