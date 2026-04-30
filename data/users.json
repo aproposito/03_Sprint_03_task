@@ -3,5 +3,15 @@
         "id": "69f27ae3bc86b",
         "username": "testinglogin",
         "password": "$2y$12$xilBg62eVypmOB2u9LhM.O.fl54rjEvJCnp47zxwZ0ET7ftmXaUBK"
+    },
+    {
+        "id": "69f33b36bdaa1",
+        "username": "testingmysql",
+        "password": "$2y$12$IXMtxklyssK5S1\/uh\/MItuO..jAIhFVZfYhIXUGDh\/btodimp6Rxy"
+    },
+    {
+        "id": "69f35fa0edd01",
+        "username": "testinglogin11",
+        "password": "$2y$12$fZgc\/pw1Pkcc09eVZComxuDBXEmkzC1O7XIKPRQMJMudzVq2e1xWS"
     }
 ]

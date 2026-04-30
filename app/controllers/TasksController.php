@@ -66,8 +66,9 @@ class TasksController extends ApplicationController
     public function deleteAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $tagModelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $id = (int) $this->_getParam('id');
-        Tag::deleteTaskTags($id);
+        $tagModelClass::deleteTaskTags($id);
         $modelClass::destroy($id);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;

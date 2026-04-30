@@ -1,2 +1,2 @@
 <?php
-define('PERSISTENCE', 'json'); // 'json' o 'mysql'
+define('PERSISTENCE', 'mysql'); // 'json' o 'mysql'

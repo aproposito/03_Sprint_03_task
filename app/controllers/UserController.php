@@ -1,7 +1,7 @@
 <?php
 class UserController extends ApplicationController
 {
-    private function _getUserModel(): User
+    private function _getUserModel()
     {
         return PERSISTENCE === 'mysql' ? new UserMysql() : new User();
     }
