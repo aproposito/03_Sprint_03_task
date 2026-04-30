@@ -3,10 +3,19 @@ declare(strict_types=1);
 
 class TasksController extends ApplicationController
 {
+    private function modelClass(): string
+{
+    return PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+}
+
+private function tagModelClass(): string
+{
+    return PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
+}
     public function indexAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
-        $tagModelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
+        $modelClass = $this->modelClass();
+        $tagModelClass = $this->tagModelClass();    
         $tasks = $modelClass::getByUser($_SESSION['user']['id']);
         $search = $this->_getParam('search');
         $status = $this->_getParam('status');
@@ -35,11 +44,12 @@ class TasksController extends ApplicationController
         $this->view->tasks = array_values($tasks);
         $this->view->allTags = $tagModelClass::getByUser($_SESSION['user']['id']);
         $this->view->selectedTagIds = $tagId ? [$tagId] : [];
+        $this->view->username = $_SESSION['user']['username'];
     }
 
     public function showAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $modelClass = $this->modelClass();
         $id = (int) $this->_getParam('id');
         $task = $modelClass::getById($id);
         $this->view->task = $task;
@@ -47,8 +57,8 @@ class TasksController extends ApplicationController
 
     public function createAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
-        $tagModelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
+            $modelClass = $this->modelClass();
+            $tagModelClass = $this->tagModelClass();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tagIds = isset($_POST['tag_ids']) ? array_map('intval', $_POST['tag_ids']) : [];
             $task = $this->_getAllParams();
@@ -64,9 +74,10 @@ class TasksController extends ApplicationController
 
     public function deleteAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $modelClass = $this->modelClass();
+        $tagModelClass = $this->tagModelClass();
         $id = (int) $this->_getParam('id');
-        Tag::deleteTaskTags($id);
+        $tagModelClass::deleteTaskTags($id);
         $modelClass::destroy($id);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
@@ -74,8 +85,8 @@ class TasksController extends ApplicationController
 
     public function editAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
-        $tagModelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
+            $modelClass = $this->modelClass();
+            $tagModelClass = $this->tagModelClass();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tagIds = isset($_POST['tag_ids']) ? array_map('intval', $_POST['tag_ids']) : [];
             $task = $this->_getAllParams();
@@ -97,7 +108,7 @@ class TasksController extends ApplicationController
 
     public function updateStatusAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $modelClass = $this->modelClass();
         $id = (int) $this->_getParam('id');
         $status = $this->_getParam('status');
         $modelClass::updateStatus($id, $status);
