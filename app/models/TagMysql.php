@@ -82,9 +82,6 @@ class TagMysql
         $stmt = $pdo->prepare("SELECT * FROM tags WHERE user_id IS NULL OR user_id = ?");
         $stmt->execute([$userId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
-    die();
-    return $result;
     }
 
     public static function getTagsByTaskId(int $taskId): array
