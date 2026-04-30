@@ -6,10 +6,6 @@
     </div>
   <?php endif; ?>
 
-  <p class="text-sm text-gray-500 mb-8">
-    Username: <span class="text-gray-800 font-medium"><?= htmlspecialchars($this->user["username"]) ?></span>
-  </p>
-
   <h2 class="text-sm font-medium text-gray-800 mb-3">Edit username</h2>
   <form method="POST" action="<?= $this->baseUrl() ?>/user/update-username" class="mb-6">
     <div class="mb-3">
