@@ -5,32 +5,34 @@ declare(strict_types=1);
 class TagsController extends ApplicationController
 {
 
+    private string $modelClass;
+
     public function beforeFilters()
     {
         if (empty($_SESSION['user'])) {
             header('Location: ' . $this->_baseUrl() . '/user/login');
             exit;
         }
+
+        $this->modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
     }
 
     public function indexAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
-        $this->view->tags = $modelClass::getByUser($_SESSION['user']['id']);
+        $this->view->tags = $this->modelClass::getByUser($_SESSION['user']['id']);
     }
 
     public function createAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag'; 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($this->getRequest()->isPost()) {
             $tag = [
-                'name' => $_POST['name'],
-                'color' => $_POST['color'],
-                'icon' => $_POST['icon'],
+                'name' => $this->_getParam('name'),
+                'color' => $this->_getParam('color'),
+                'icon' => $this->_getParam('icon'),
                 'user_id' => $_SESSION['user']['id']
             ];
 
-            $modelClass::save($tag);
+            $this->modelClass::save($tag);
             header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
@@ -38,25 +40,23 @@ class TagsController extends ApplicationController
 
     public function editAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $id = (int) $this->_getParam('id');
-        $tag = $modelClass::fetchOne($id);
+        $tag = $this->modelClass::fetchOne($id);
 
         if (!$tag || ($tag['user_id'] !== $_SESSION['user']['id'])) {
             header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tag = [
-                'id'      => $id,
-                'name'    => $_POST['name'],
-                'color'   => $_POST['color'],
-                'icon'    => $_POST['icon'],
+        if ($this->getRequest()->isPost()) {
+            $this->modelClass::update([
+                'id' => $id,
+                'name' => $this->_getParam('name'),
+                'color' => $this->_getParam('color'),
+                'icon' => $this->_getParam('icon'),
                 'user_id' => $_SESSION['user']['id']
-            ];
+            ]);
 
-            $modelClass::update($tag);
             header('Location: ' . $this->_baseUrl() . '/tags');
             exit;
         }
@@ -65,12 +65,11 @@ class TagsController extends ApplicationController
 
     public function deleteAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $id = (int) $this->_getParam('id');
-        $tag = $modelClass::fetchOne($id);
+        $tag = $this->modelClass::fetchOne($id);
 
         if ($tag && $tag['user_id'] === $_SESSION['user']['id']) {
-            $modelClass::delete($id);
+            $this->modelClass::delete($id);
         }
         header('Location: ' . $this->_baseUrl() . '/tags');
         exit;
@@ -78,18 +77,16 @@ class TagsController extends ApplicationController
 
     public function quickCreateAction()
     {
-        $modelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $returnTo = $this->_getParam('return_to', 'tags');
         $taskId = $this->_getParam('task_id');
-    
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tag = [
-                'name' => $_POST['name'],
-                'color' => $_POST['color'],
-                'icon' => $_POST['icon'],
+
+        if ($this->getRequest()->isPost()) {
+            $this->modelClass::save([
+                'name' => $this->_getParam('name'),
+                'color' => $this->_getParam('color'),
+                'icon' => $this->_getParam('icon'),
                 'user_id' => $_SESSION['user']['id']
-            ];
-            $modelClass::save($tag);
+            ]);
 
             if ($returnTo === 'task_create') {
                 header('Location: ' . $this->_baseUrl() . '/tasks/create');
@@ -100,6 +97,7 @@ class TagsController extends ApplicationController
             }
             exit;
         }
+
         $this->view->returnTo = $returnTo;
         $this->view->taskId = $taskId;
     }

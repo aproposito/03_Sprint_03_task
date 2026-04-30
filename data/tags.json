@@ -54,5 +54,40 @@
         "icon": "💡",
         "user_id": "69f30f8c24290",
         "id": 8
+    },
+    {
+        "name": "hobby",
+        "color": "#fda4af",
+        "icon": "🌿",
+        "user_id": "69f30f8c24290",
+        "id": 9
+    },
+    {
+        "name": "birthdays",
+        "color": "#6366f1",
+        "icon": "🎂",
+        "user_id": "69f30f8c24290",
+        "id": 10
+    },
+    {
+        "name": "gaming",
+        "color": "#334155",
+        "icon": "🎮",
+        "user_id": "69f30f8c24290",
+        "id": 11
+    },
+    {
+        "name": "gym",
+        "color": "#dc2626",
+        "icon": "🏋️",
+        "user_id": "69f30f8c24290",
+        "id": 12
+    },
+    {
+        "name": "berry",
+        "color": "#dc2626",
+        "icon": "🍓",
+        "user_id": "69f30f8c24290",
+        "id": 13
     }
 ]
