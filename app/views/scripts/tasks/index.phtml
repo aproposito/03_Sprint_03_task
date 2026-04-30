@@ -1,4 +1,7 @@
 <div class="max-w-2xl mx-auto mt-12 px-4">
+  <div class="bg-white border border-gray-200 rounded-xl p-6">
+
+<div class="max-w-2xl mx-auto mt-12 px-4">
     <div class="flex items-center justify-between mb-6">
         <h1 class="text-xl font-medium text-gray-800">My tasks</h1>
         <div class="flex gap-3 text-sm">
@@ -35,7 +38,7 @@
             Search
         </button>
         <a href="<?= $this->baseUrl ?>/dashboard"
-            class="px-4 py-2 text-sm text-gray-400 hover:text-gray-600 rounded-lg">
+            class="px-4 py-2 text-sm font-medium bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg transition-colors">
             Clear
         </a>
     </form>
@@ -51,7 +54,8 @@
                     <div class="flex flex-wrap gap-1.5 mt-1.5">
                         <span class="text-xs text-gray-400"><?= $task['status'] ?></span>
                         <?php foreach ($task['tags'] as $tag): ?>
-                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+                            <span class="text-xs text-gray-700 px-2 py-0.5 rounded-full"
+                                style="background-color: <?= $tag['color'] ?>22">
                                 <?= $tag['icon'] ?> <?= $tag['name'] ?>
                             </span>
                         <?php endforeach ?>
@@ -64,4 +68,7 @@
             </li>
         <?php endforeach ?>
     </ul>
+</div>
+
+  </div>
 </div>
