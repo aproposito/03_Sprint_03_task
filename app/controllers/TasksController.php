@@ -44,6 +44,7 @@ private function tagModelClass(): string
         $this->view->tasks = array_values($tasks);
         $this->view->allTags = $tagModelClass::getByUser($_SESSION['user']['id']);
         $this->view->selectedTagIds = $tagId ? [$tagId] : [];
+        $this->view->username = $_SESSION['user']['username'];
     }
 
     public function showAction()

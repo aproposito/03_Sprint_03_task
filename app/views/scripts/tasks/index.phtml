@@ -1,6 +1,6 @@
 <div class="max-w-2xl mx-auto mt-12 px-4">
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-xl font-medium text-gray-800">My tasks</h1>
+        <h1 class="text-xl font-medium text-gray-800"><?= htmlspecialchars($this->username) ?>'s tasks</h1>
         <div class="flex gap-3 text-sm">
             <a href="<?= $this->baseUrl ?>/tasks/create" class="text-gray-800 font-medium hover:underline">New task</a>
             <a href="<?= $this->baseUrl ?>/tags" class="text-gray-800 font-medium hover:underline">Manage tags</a>
