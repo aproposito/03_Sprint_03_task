@@ -35,6 +35,7 @@ class TasksController extends ApplicationController
         $this->view->tasks = array_values($tasks);
         $this->view->allTags = $tagModelClass::getByUser($_SESSION['user']['id']);
         $this->view->selectedTagIds = $tagId ? [$tagId] : [];
+        $this->view->username = $_SESSION['user']['username'];
     }
 
     public function showAction()
@@ -65,8 +66,9 @@ class TasksController extends ApplicationController
     public function deleteAction()
     {
         $modelClass = PERSISTENCE === 'mysql' ? 'TaskMysql' : 'Task';
+        $tagModelClass = PERSISTENCE === 'mysql' ? 'TagMysql' : 'Tag';
         $id = (int) $this->_getParam('id');
-        Tag::deleteTaskTags($id);
+        $tagModelClass::deleteTaskTags($id);
         $modelClass::destroy($id);
         header('Location: ' . $this->_baseUrl() . '/dashboard');
         exit;
