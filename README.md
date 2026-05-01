@@ -1,83 +1,102 @@
-# PHP initial Project
-Main structure of php project. Folders / files:
-- **app**
-  - **controllers**
-  - **models**
-  - **views**
-- **config**
-- **lib**
-  - **base**
-- **web**
+# Tasca S3.03 — TODO App (Sprint 3: Full Stack PHP 2025–2026)
 
-### Usage
+## Descripción
 
-The web/index.php is the heart of the system.
-This means that your web applications root folder is the “web” folder.
+Aplicación web de gestión de tareas personales construida en PHP con arquitectura MVC sobre el framework `phpInitialDemo`. Cada usuario ve únicamente sus propias tareas. La aplicación soporta dos capas de persistencia intercambiables: JSON (Nivel 1) y MySQL/PDO (Nivel 2).
 
-All requests go through this file and it decides how the routing of the app
-should be.
-You can add additional hooks in this file to add certain routes.
+## Stack técnico
 
-### Project Structure
+- PHP 8.2 — arquitectura MVC (framework `phpInitialDemo`)
+- MySQL / PDO — persistencia relacional (Nivel 2)
+- JSON — persistencia en fichero (Nivel 1)
+- Tailwind CSS (sin framework frontend)
+- Git + Gitflow
 
-The root of the project holds a few directories:
-**/app** This is the folder where your magic will happen. Use the views, controllers and models folder for your app code.
-**/config** this folder holds a few configuration files. Currently only the connection to the database.
-**/lib** This is where you should put external libraries and other external files.
-**/lib/base** The library files. Don’t change these :)
-**/web** This folder holds files that are to be “downloaded” from your app. Stylesheets, javascripts and images used. (and more of course)
+## Funcionalidades
 
-The system uses a basic MVC structure, with your web app’s files located in the
-“app” folder.
+- Registro, login y logout de usuarios
+- Dashboard con lista de tareas propias ordenadas por estado
+- Filtros por nombre, estado y etiqueta
+- CRUD completo de tareas con fechas automáticas
+- CRUD completo de etiquetas (globales y privadas por usuario)
+- Asignación de etiquetas a tareas
+- Editar perfil y eliminar cuenta (con borrado en cascada)
+- Alternancia entre persistencia JSON y MySQL mediante una constante
 
-#### app/controllers
-Your application’s controllers should be defined here.
+## Estructura
 
-All controller names should end with “Controller”. E.g. TestController.
-All controllers should inherit the library’s “Controller” class.
-However, you should generally just make an ApplicationController, which extends
-the Controller. Then you can defined beforeFilters etc in that, which will get run
-at every request.
+```
+app/
+├─ controllers/
+│  ├─ TasksController.php
+│  ├─ UserController.php
+│  └─ TagsController.php
+├─ models/
+│  ├─ Task.php / TaskMysql.php
+│  ├─ User.php / UserMysql.php
+│  └─ Tag.php / TagMysql.php
+└─ views/
+   └─ scripts/
+      ├─ tasks/
+      ├─ user/
+      └─ tags/
+config/
+├─ routes.php
+├─ environment.inc.php
+├─ settings.ini.example
+└─ Todo_Model_SQL.sql
+data/
+├─ tasks.json
+├─ users.json
+├─ tags.json
+└─ task_tags.json
+web/
+└─ index.php
+```
 
-#### app/models
-Models handles database interaction etc.
+## Instalación y ejecución
 
-All models should inherit from the Model class, which provides basic functionality.
-The Model class handles basic functionality such as:
+### Nivel 1 — Persistencia JSON
 
-Setting up a database connection (using PDO)
-fetchOne(ID)
-save(array) → both update/create
-delete(ID)
-app/views
-Your view files.
-The structure is made so that having a controller named TestController, it looks
-in the app/views/test/ folder for it’s view files.
+1. Clonar el repositorio y situarse en la rama `develop`:
+   ```bash
+   git clone https://github.com/aproposito/03_Sprint_03_task.git
+   git checkout develop
+   ```
+2. Configurar un Virtual Host apuntando a `/web`, o usar XAMPP con la ruta completa.
+3. En `config/environment.inc.php`, establecer:
+   ```php
+   define('PERSISTENCE', 'json');
+   ```
+4. Acceder a `/user/register` para crear una cuenta.
 
-All view files end with .phtml
-Having an action in the TestController called index, the view file
-app/views/test/index.phtml will be rendered as default.
+### Nivel 2 — Persistencia MySQL
 
-#### config/routes.php
-Your routes around the system needs to be defined here.
-A route consists of the URL you want to call + the controller#action you want it
-to hit.
+1. Ejecutar `config/Todo_Model_SQL.sql` en MySQL para crear el esquema.
+2. Copiar `config/settings.ini.example` a `config/settings.ini` y rellenar las credenciales:
+   ```ini
+   [database]
+   driver   = mysql
+   host     = 127.0.0.1
+   dbname   = todo_db
+   user     = root
+   password = your_password
+   ```
+3. En `config/environment.inc.php`, establecer:
+   ```php
+   define('PERSISTENCE', 'mysql');
+   ```
 
-An example is:
-$routes = array(
-‘/test’ => ‘test#index’ // this will hit the TestController’s indexAction method.
-);
+**URL local:** `http://todo.local` (con Virtual Host) o `http://localhost/[ruta-proyecto]/web`
 
-#### Error handling
-A general error handling has been added.
+## Decisiones de diseño
 
-If a route doesn’t exist, then the error controller is hit.
-If some other exception was thrown, the error controller is hit.
-As default, the error controller just shows the exception occured, so remember
-to style the error controller’s view file (app/views/error/error.phtml)
+- Modelos paralelos JSON/MySQL con la misma interfaz pública — la constante `PERSISTENCE` en `environment.inc.php` controla qué capa se instancia.
+- `$_SESSION['user']` almacena el objeto usuario completo tras el login.
+- Borrado en cascada implementado manualmente en MySQL: `task_tags → tasks/tags → users`.
+- `ApplicationController::init()` inyecta `baseUrl` en todas las vistas para compatibilidad con y sin Virtual Host.
 
+## Diagrama de base de datos (Nivel 2)
 
-### Utilities
-- [PHP Developers Guide](https://www.php.net/manual/en/index.php).
-- .gitignore file configuration. [See Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-- Git branches. [See Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell).
+<img width="722" height="564" alt="mer_diagram" src="https://github.com/user-attachments/assets/f4710341-94bc-4a20-a51e-9695ef53223a" />
+
