@@ -82,5 +82,12 @@
         "icon": "🏋️",
         "user_id": "69f30f8c24290",
         "id": 12
+    },
+    {
+        "name": "cat",
+        "color": "#f59e0b",
+        "icon": "⭐",
+        "user_id": "69f30f8c24290",
+        "id": 13
     }
 ]
