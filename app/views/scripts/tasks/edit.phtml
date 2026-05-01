@@ -1,4 +1,4 @@
-<div class="max-w-lg mx-auto mt-12 px-4">
+<div class="max-w-lg mx-auto mt-12 px-4 bg-white border border-gray-200 rounded-xl p-6">
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-xl font-medium text-gray-800"><?= htmlspecialchars($this->task['name']) ?></h1>
     <a href="<?= $this->baseUrl ?>/dashboard" class="text-sm text-gray-400 hover:text-gray-600">Back</a>
@@ -10,59 +10,67 @@
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-1.5">Name</label>
       <input type="text" name="name" value="<?= htmlspecialchars($this->task['name']) ?>"
-             class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
+        class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
     </div>
 
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-1.5">Description</label>
-      <textarea name="description" rows="4"
-                class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 resize-none"><?= htmlspecialchars($this->task['description']) ?></textarea>
+      <textarea name="description"
+        class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 resize-none min-h-24 max-h-64 overflow-y-auto"
+        id="description"
+        oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,196)+'px'"><?= htmlspecialchars($this->task['description']) ?></textarea>
+
+      <script>
+        const ta = document.getElementById('description');
+        ta.style.height = 'auto';
+        ta.style.height = Math.min(ta.scrollHeight, 196) + 'px';
+      </script>
     </div>
 
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-1.5">Status</label>
       <select name="status"
-              class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 text-gray-600">
-        <option value="pending"     <?= $this->task['status'] === 'pending'     ? 'selected' : '' ?>>Pending</option>
+        class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 text-gray-600">
+        <option value="pending" <?= $this->task['status'] === 'pending'     ? 'selected' : '' ?>>Pending</option>
         <option value="in_progress" <?= $this->task['status'] === 'in_progress' ? 'selected' : '' ?>>In progress</option>
-        <option value="completed"   <?= $this->task['status'] === 'completed'   ? 'selected' : '' ?>>Completed</option>
+        <option value="completed" <?= $this->task['status'] === 'completed'   ? 'selected' : '' ?>>Completed</option>
       </select>
     </div>
 
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-1.5">Due date</label>
       <input type="datetime-local" name="end_time" value="<?= $this->task['end_time'] ?>"
-             class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 text-gray-600">
+        class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 text-gray-600">
     </div>
 
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-2">Tags</label>
       <div class="flex flex-wrap gap-2">
         <?php foreach ($this->availableTags as $tag): ?>
-          <label class="flex items-center gap-1.5 text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full cursor-pointer hover:bg-gray-200">
+          <label class="flex items-center gap-1.5 text-sm text-gray-700 px-3 py-1 rounded-full cursor-pointer hover:opacity-80"
+            style="background-color: <?= $tag['color'] ?>22">
             <input type="checkbox" name="tag_ids[]" value="<?= $tag['id'] ?>"
-                   <?= in_array($tag['id'], $this->selectedTagIds ?? []) ? 'checked' : '' ?>
-                   class="accent-gray-500">
+              <?= in_array($tag['id'], $this->selectedTagIds ?? []) ? 'checked' : '' ?>
+              class="accent-gray-500">
             <?= $tag['icon'] ?> <?= $tag['name'] ?>
           </label>
         <?php endforeach ?>
         <a href="<?= $this->baseUrl ?>/tags/quick-create?return_to=task_edit&task_id=<?= $this->task['id'] ?>"
-           class="text-sm text-gray-400 hover:text-gray-600 px-3 py-1 rounded-full border border-dashed border-gray-300 hover:border-gray-400">
+          class="text-sm text-gray-400 hover:text-gray-600 px-3 py-1 rounded-full border border-dashed border-gray-300 hover:border-gray-400">
           + new tag
         </a>
       </div>
     </div>
 
     <button type="submit"
-            class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
+      class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
       Save
     </button>
   </form>
 
   <div class="mt-4 pt-4 border-t border-gray-100">
     <a href="<?= $this->baseUrl ?>/tasks/delete/<?= $this->task['id'] ?>"
-       class="block w-full text-center text-sm text-red-400 hover:text-red-600 py-2">
+      class="block w-full text-center text-sm text-red-400 hover:text-red-600 py-2">
       Delete task
     </a>
   </div>
-</div>

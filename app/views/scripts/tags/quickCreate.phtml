@@ -1,4 +1,4 @@
-<div class="max-w-lg mx-auto mt-12 px-4">
+<div class="max-w-lg mx-auto mt-12 px-4 bg-white border border-gray-200 rounded-xl p-6">
 
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-xl font-medium text-gray-800">New tag</h1>
@@ -18,7 +18,7 @@
     <div>
       <label class="block text-xs font-medium text-gray-500 mb-1.5">Name</label>
       <input type="text" name="name" required
-             class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
+        class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
     </div>
 
     <div>
@@ -57,10 +57,10 @@
         <?php foreach ($colors as $name => $hex): ?>
           <label class="cursor-pointer">
             <input type="radio" name="color" value="<?= $hex ?>"
-                   <?= $hex === '#6b7280' ? 'checked' : '' ?>
-                   class="sr-only peer">
+              <?= $hex === '#6b7280' ? 'checked' : '' ?>
+              class="sr-only peer">
             <span class="block w-7 h-7 rounded-full border-2 border-transparent peer-checked:border-gray-800 hover:opacity-80 transition-opacity"
-                  style="background-color: <?= $hex ?>">
+              style="background-color: <?= $hex ?>">
             </span>
           </label>
         <?php endforeach ?>
@@ -76,8 +76,8 @@
         <?php foreach ($icons as $icon): ?>
           <label class="cursor-pointer">
             <input type="radio" name="icon" value="<?= $icon ?>"
-                   <?= $icon === '#️⃣' ? 'checked' : '' ?>
-                   class="sr-only peer">
+              <?= $icon === '#️⃣' ? 'checked' : '' ?>
+              class="sr-only peer">
             <span class="text-lg px-2 py-1 rounded-lg border border-transparent peer-checked:border-gray-300 peer-checked:bg-gray-100 hover:bg-gray-50">
               <?= $icon ?>
             </span>
@@ -87,7 +87,7 @@
     </div>
 
     <button type="submit"
-            class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
+      class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
       Create tag
     </button>
 

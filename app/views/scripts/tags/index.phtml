@@ -1,5 +1,4 @@
-
-<div class="max-w-lg mx-auto mt-12 px-4">
+<div class="max-w-lg mx-auto mt-12 px-4 bg-white border border-gray-200 rounded-xl p-6">
 
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-xl font-medium text-gray-800">Tags</h1>
@@ -12,7 +11,7 @@
       <?php foreach ($this->tags as $tag): ?>
         <?php if ($tag['user_id'] === null): ?>
           <span class="text-xs text-gray-700 px-3 py-1 rounded-full"
-                style="background-color: <?= $tag['color'] ?>22">
+            style="background-color: <?= $tag['color'] ?>22">
             <?= $tag['icon'] ?> <?= $tag['name'] ?>
           </span>
         <?php endif ?>
@@ -26,7 +25,7 @@
       <?php foreach ($this->tags as $tag): ?>
         <?php if ($tag['user_id'] !== null): ?>
           <div class="flex items-center gap-1.5 text-xs text-gray-700 px-3 py-1 rounded-full"
-                style="background-color: <?= $tag['color'] ?>22">
+            style="background-color: <?= $tag['color'] ?>22">
             <span><?= $tag['icon'] ?> <?= $tag['name'] ?></span>
             <a href="<?= $this->baseUrl() ?>/tags/edit/<?= $tag['id'] ?>" class="text-gray-400 hover:text-gray-600">Edit</a>
             <a href="<?= $this->baseUrl() ?>/tags/delete/<?= $tag['id'] ?>" class="text-red-400 hover:text-red-600">Delete</a>
@@ -44,76 +43,76 @@
       <div>
         <label class="block text-xs font-medium text-gray-500 mb-1.5">Name</label>
         <input type="text" name="name" required
-               class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
+          class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300">
       </div>
 
-<div>
-  <label class="block text-xs font-medium text-gray-500 mb-2">Color</label>
-  <?php
-$colors = [
-  'gray'     => '#6b7280',
-  'crimson'  => '#dc2626',
-  'sunset'   => '#f97316',
-  'amber'    => '#f59e0b',
-  'lime'     => '#84cc16',
-  'emerald'  => '#10b981',
-  'teal'     => '#14b8a6',
-  'sky'      => '#0ea5e9',
-  'indigo'   => '#6366f1',
-  'violet'   => '#8b5cf6',
-  'fuchsia'  => '#d946ef',
-  'rose'     => '#f43f5e',
-  'coral'    => '#fb6f92',
-  'mint'     => '#6ee7b7',
-  'lavender' => '#c4b5fd',
-  'gold'     => '#eab308',
-  'slate'    => '#64748b',
-  'ocean'    => '#0369a1',
-  'forest'   => '#15803d',
-  'wine'     => '#9f1239',
-  'sand'     => '#d97706',
-  'neon'     => '#39ff14',
-  'midnight' => '#1e1b4b',
-  'blush'    => '#fda4af',
-  'steel'    => '#334155',
-  'copper'   => '#b45309',
-];
-  ?>
-  <div class="flex flex-wrap gap-2">
-    <?php foreach ($colors as $name => $hex): ?>
-      <label class="cursor-pointer">
-        <input type="radio" name="color" value="<?= $hex ?>"
-               <?= $hex === '#6b7280' ? 'checked' : '' ?>
-               class="sr-only peer">
-        <span class="block w-7 h-7 rounded-full border-2 border-transparent peer-checked:border-gray-800 hover:opacity-80 transition-opacity"
-              style="background-color: <?= $hex ?>">
-        </span>
-      </label>
-    <?php endforeach ?>
-  </div>
-</div>
+      <div>
+        <label class="block text-xs font-medium text-gray-500 mb-2">Color</label>
+        <?php
+        $colors = [
+          'gray'     => '#6b7280',
+          'crimson'  => '#dc2626',
+          'sunset'   => '#f97316',
+          'amber'    => '#f59e0b',
+          'lime'     => '#84cc16',
+          'emerald'  => '#10b981',
+          'teal'     => '#14b8a6',
+          'sky'      => '#0ea5e9',
+          'indigo'   => '#6366f1',
+          'violet'   => '#8b5cf6',
+          'fuchsia'  => '#d946ef',
+          'rose'     => '#f43f5e',
+          'coral'    => '#fb6f92',
+          'mint'     => '#6ee7b7',
+          'lavender' => '#c4b5fd',
+          'gold'     => '#eab308',
+          'slate'    => '#64748b',
+          'ocean'    => '#0369a1',
+          'forest'   => '#15803d',
+          'wine'     => '#9f1239',
+          'sand'     => '#d97706',
+          'neon'     => '#39ff14',
+          'midnight' => '#1e1b4b',
+          'blush'    => '#fda4af',
+          'steel'    => '#334155',
+          'copper'   => '#b45309',
+        ];
+        ?>
+        <div class="flex flex-wrap gap-2">
+          <?php foreach ($colors as $name => $hex): ?>
+            <label class="cursor-pointer">
+              <input type="radio" name="color" value="<?= $hex ?>"
+                <?= $hex === '#6b7280' ? 'checked' : '' ?>
+                class="sr-only peer">
+              <span class="block w-7 h-7 rounded-full border-2 border-transparent peer-checked:border-gray-800 hover:opacity-80 transition-opacity"
+                style="background-color: <?= $hex ?>">
+              </span>
+            </label>
+          <?php endforeach ?>
+        </div>
+      </div>
 
-<div>
-  <label class="block text-xs font-medium text-gray-500 mb-2">Icon</label>
-  <?php
-  $icons = ['#️⃣', '🔥', '⚡', '🎯', '🌿', '🎂', '🎵', '🏋️', '🎮', '💡', '🎨', '🧠', '⭐', '🛍️', '💬', '🧩', '📅', '🍓'];
-  ?>
-  <div class="flex flex-wrap gap-2">
-    <?php foreach ($icons as $icon): ?>
-      <label class="cursor-pointer">
-        <input type="radio" name="icon" value="<?= $icon ?>"
-               <?= $icon === '#️⃣' ? 'checked' : '' ?>
-               class="sr-only peer">
-        <span class="text-lg px-2 py-1 rounded-lg border border-transparent peer-checked:border-gray-300 peer-checked:bg-gray-100 hover:bg-gray-50">
-          <?= $icon ?>
-        </span>
-      </label>
-    <?php endforeach ?>
-  </div>
-</div>
+      <div>
+        <label class="block text-xs font-medium text-gray-500 mb-2">Icon</label>
+        <?php
+        $icons = ['#️⃣', '🔥', '⚡', '🎯', '🌿', '🎂', '🎵', '🏋️', '🎮', '💡', '🎨', '🧠', '⭐', '🛍️', '💬', '🧩', '📅', '🍓'];
+        ?>
+        <div class="flex flex-wrap gap-2">
+          <?php foreach ($icons as $icon): ?>
+            <label class="cursor-pointer">
+              <input type="radio" name="icon" value="<?= $icon ?>"
+                <?= $icon === '#️⃣' ? 'checked' : '' ?>
+                class="sr-only peer">
+              <span class="text-lg px-2 py-1 rounded-lg border border-transparent peer-checked:border-gray-300 peer-checked:bg-gray-100 hover:bg-gray-50">
+                <?= $icon ?>
+              </span>
+            </label>
+          <?php endforeach ?>
+        </div>
+      </div>
 
       <button type="submit"
-              class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
+        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium py-2.5 rounded-lg transition-colors">
         Create tag
       </button>
 
