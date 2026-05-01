@@ -46,7 +46,7 @@
                 <div class="flex-1 min-w-0">
                     <p class="text-sm font-medium text-gray-800"><?= $task['name'] ?></p>
                     <?php if ($task['description']): ?>
-                        <p class="text-xs text-gray-400 mt-0.5 line-clamp-3"><?= htmlspecialchars($task['description']) ?></p>
+                        <p class="text-xs text-gray-400 mt-0.5 line-clamp-3 break-all"><?= htmlspecialchars($task['description']) ?></p>
                     <?php endif ?>
                     <div class="flex flex-wrap gap-1.5 mt-1.5">
                         <span class="text-xs text-gray-400"><?= $task['status'] ?></span>
